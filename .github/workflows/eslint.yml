@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+  security-events: write
+
 jobs:
   lint:
     name: Run ESLint
@@ -36,6 +40,7 @@ jobs:
         continue-on-error: true
 
       - name: Upload ESLint results
+        if: github.event_name == 'push' # ✅ only upload on push, not PRs from forks
         uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: eslint-results.sarif
