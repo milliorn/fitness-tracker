@@ -31,7 +31,7 @@ jobs:
         run: |
           npx eslint . \
             --ext .js,.jsx,.ts,.tsx \
-            --format node_modules/@microsoft/eslint-formatter-sarif \
+            --format node_modules/@microsoft/eslint-formatter-sarif/sarif.js \
             --output-file eslint-results.sarif
         continue-on-error: true
 
