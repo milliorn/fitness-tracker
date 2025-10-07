@@ -1,0 +1,41 @@
+name: ESLint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    name: Run ESLint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install ESLint SARIF formatter
+        run: npm install --no-save @microsoft/eslint-formatter-sarif
+
+      - name: Run ESLint (SARIF)
+        run: |
+          npx eslint . \
+            --ext .js,.jsx,.ts,.tsx \
+            --format node_modules/@microsoft/eslint-formatter-sarif/sarif.js \
+            --output-file eslint-results.sarif
+        continue-on-error: true
+
+      - name: Upload ESLint results
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: eslint-results.sarif
