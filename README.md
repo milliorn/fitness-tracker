@@ -40,3 +40,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ## tsconfig.json
 
 <https://www.typescriptlang.org/tsconfig/#Watch_and_Build_Modes_6250>
+
+## Install Material UI
+
+<https://mui.com/material-ui/getting-started/installation/>
