@@ -22,8 +22,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: "20"
+          cache: "npm"
 
       - name: Install dependencies
         run: npm ci
@@ -40,7 +40,7 @@ jobs:
         continue-on-error: true
 
       - name: Upload ESLint results
-        if: github.event_name == 'push' # ✅ only upload on push, not PRs from forks
+        if: github.event_name == 'push' # only upload on push, not PRs from forks
         uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: eslint-results.sarif
