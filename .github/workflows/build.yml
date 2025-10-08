@@ -1,0 +1,30 @@
+name: Next.js Build Check
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout your repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Use correct version (match .nvmrc or package.json "engines")
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # 4. Build Next.js project
+      - name: Build Next.js
+        run: npm run build
