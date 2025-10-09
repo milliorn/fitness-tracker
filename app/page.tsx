@@ -19,7 +19,7 @@ export default function Home() {
           color: "white",
           px: 3,
         },
-        // CSS selector that targets every .MuiButton-root except the last one inside the 
+        // CSS selector that targets every .MuiButton-root except the last one inside the
         // ButtonGroup to add spacing between the buttons, but not after the last one.
         "& .MuiButton-root:not(:last-of-type)": {
           marginRight: "12px",
