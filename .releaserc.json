@@ -1,29 +1,32 @@
 {
   "branches": ["main"],
-  "repositoryUrl": "https://github.com/milliorn/fitness-tracker",
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
-    [
-      "@semantic-release/changelog",
-      {
-        "changelogFile": "CHANGELOG.md",
-        "changelogTitle": "# Changelog\n\nAll notable changes to this project will be documented in this file."
-      }
-    ],
+    "@semantic-release/changelog",
     [
       "@semantic-release/npm",
-      {
-        "npmPublish": false
-      }
+      { "npmPublish": false }
     ],
     [
       "@semantic-release/git",
       {
         "assets": ["package.json", "CHANGELOG.md"],
-        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+        "message": "chore(release): ${nextRelease.version} [skip ci]"
       }
     ],
-    "@semantic-release/github"
+    [
+      "@semantic-release/github",
+      {
+        "successComment": false,
+        "failComment": false,
+        "labels": ["release"],
+        "releasedLabels": ["released"],
+        "assignees": ["milliorn"],
+        "release": false,
+        "prTitle": "chore(release): ${nextRelease.version}",
+        "prBody": "This PR was created automatically by **semantic-release**. Once merged, it will trigger the official release."
+      }
+    ]
   ]
 }
