@@ -3,9 +3,18 @@ import ButtonGroup from "@mui/material/ButtonGroup";
 
 export default function Home() {
   return (
-    <><div>hello world</div><ButtonGroup variant="contained" aria-label="login and register buttons">
+    <ButtonGroup
+      variant="outlined"
+      aria-label="login and register buttons"
+      sx={{
+        "& .MuiButton-root": {
+          color: "white",
+          borderColor: "white",
+        },
+      }}
+    >
       <Button>Login</Button>
       <Button>Register</Button>
-    </ButtonGroup></>
+    </ButtonGroup>
   );
 }
