@@ -8,8 +8,11 @@ export default function Home() {
       aria-label="login and register buttons"
       sx={{
         "& .MuiButton-root": {
-          color: "white",
           borderColor: "white",
+          borderRadius: '9999px',
+          color: "white",
+          px: 2
+
         },
       }}
     >
