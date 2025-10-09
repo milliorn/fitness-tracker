@@ -44,3 +44,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ## Install Material UI
 
 <https://mui.com/material-ui/getting-started/installation/>
+
+## Next.js integration
+
+<https://mui.com/material-ui/integrations/nextjs/>
