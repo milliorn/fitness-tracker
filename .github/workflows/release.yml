@@ -1,41 +1,21 @@
-name: Release
+name: release-please
 
 on:
   push:
-    branches:
-      - main
-  workflow_dispatch: # allow manual trigger
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
-  release:
+  release-please:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-      issues: write
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: googleapis/release-please-action@v4
         with:
-          fetch-depth: 0
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run Semantic Release
-        uses: cycjimmy/semantic-release-action@v4
-        with:
-          branches: main
-          extra_plugins: |
-            @semantic-release/npm
-            @semantic-release/git
-            @semantic-release/github
-        env:
-          # Use your personal fine-grained PAT instead of the default token
-          GITHUB_TOKEN: ${{ secrets.ACTIONS_PAT }}
+          # Optional so CI checks trigger on the PR:
+          token: ${{ secrets.ACTIONS_PAT }}
+          # Single-package Node repo:
+          release-type: node
