@@ -1,14 +1,19 @@
-import Avatar from '@mui/material/Avatar';
-import Box from '@mui/material/Box';
+import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 
 export default function Home() {
   return (
-    <Box><Avatar alt='Homepage Logo' src='monolith.webp' sx={{
-      width: 200,
-      height: 200
-    }}></Avatar>
+    <Box>
+      <Avatar
+        alt="Homepage Logo"
+        src="monolith.webp"
+        sx={{
+          width: 200,
+          height: 200,
+        }}
+      ></Avatar>
       <ButtonGroup
         id="home-login-register-buttons"
         variant="outlined"
@@ -34,6 +39,7 @@ export default function Home() {
       >
         <Button>Login</Button>
         <Button>Register</Button>
-      </ButtonGroup></Box>
+      </ButtonGroup>
+    </Box>
   );
 }
