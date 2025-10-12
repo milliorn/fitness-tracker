@@ -1,39 +1,70 @@
-import Avatar from '@mui/material/Avatar';
-import Box from '@mui/material/Box';
+import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import ButtonGroup from "@mui/material/ButtonGroup";
+import Stack from "@mui/material/Stack";
 
 export default function Home() {
   return (
-    <Box><Avatar alt='Homepage Logo' src='monolith.webp' sx={{
-      width: 200,
-      height: 200
-    }}></Avatar>
-      <ButtonGroup
-        id="home-login-register-buttons"
-        variant="outlined"
-        aria-label="login and register buttons"
+    <Box
+      component="main"
+      sx={{
+        minHeight: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Box
         sx={{
-          // overrides inline-flex for consistent spacing control
-          alignItems: "center",
-          borderRadius: "9999px",
+          width: "100%",
+          maxWidth: 480,
           display: "flex",
-          justifyContent: "center",
-          "& .MuiButton-root": {
-            borderColor: "white",
-            borderRadius: "9999px",
-            color: "white",
-            px: 3,
-          },
-          // CSS selector that targets every .MuiButton-root except the last one inside the
-          // ButtonGroup to add spacing between the buttons, but not after the last one.
-          "& .MuiButton-root:not(:last-of-type)": {
-            marginRight: "12px",
-          },
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 4,
         }}
       >
-        <Button>Login</Button>
-        <Button>Register</Button>
-      </ButtonGroup></Box>
+        <Avatar
+          alt="Homepage Logo"
+          src="/monolith.webp"
+          sx={{
+            width: [160, 200, 240, 280, 320],
+            height: [160, 200, 240, 280, 320],
+          }}
+        />
+
+        <Stack
+          id="home-login-register-buttons"
+          direction={"row"}
+          spacing={2}
+          sx={{ alignItems: "center", justifyContent: "center", width: "100%" }}
+        >
+          <Button
+            variant="outlined"
+            sx={{
+              borderRadius: "9999px",
+              px: 2,
+              color: "common.white",
+              borderColor: "common.white",
+              "&:hover": { borderColor: "common.white" },
+            }}
+          >
+            Login
+          </Button>
+          <Button
+            variant="outlined"
+            sx={{
+              borderRadius: "9999px",
+              px: 2,
+              color: "common.white",
+              borderColor: "common.white",
+              "&:hover": { borderColor: "common.white" },
+            }}
+          >
+            Register
+          </Button>
+        </Stack>
+      </Box>
+    </Box>
   );
 }

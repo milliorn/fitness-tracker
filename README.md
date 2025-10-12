@@ -52,3 +52,11 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ## material-ui/react-avatar/#image-avatars
 
 <https://mui.com/material-ui/react-avatar/#image-avatars>
+
+## googleapis/release-please github
+
+<https://github.com/googleapis/release-please>
+
+## Conventional Commits
+
+<https://www.conventionalcommits.org/en/v1.0.0/>
