@@ -27,7 +27,10 @@ export default function Home() {
         <Avatar
           alt="Homepage Logo"
           src="/monolith.webp"
-          sx={{ width: [160, 200, 240, 280, 320], height: [160, 200, 240, 280, 320] }}
+          sx={{
+            width: [160, 200, 240, 280, 320],
+            height: [160, 200, 240, 280, 320],
+          }}
         />
 
         <Stack
