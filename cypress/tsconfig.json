@@ -1,0 +1,16 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    // Use Node resolution for Cypress project to avoid Bundler quirks
+    "moduleResolution": "node",
+    "isolatedModules": false,
+    "skipLibCheck": true,
+    "types": [
+      "cypress",
+      "@testing-library/cypress" // keep if you use cy.findByRole
+      // NOTE: we do NOT list "cypress-real-events" here; the d.ts above brings it in
+    ]
+  },
+  "include": ["./**/*.ts", "./**/*.tsx"],
+  "exclude": []
+}

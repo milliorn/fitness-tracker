@@ -2,10 +2,9 @@
 
 ## [1.1.1](https://github.com/milliorn/fitness-tracker/compare/v1.1.0...v1.1.1) (2025-10-13)
 
-
 ### Bug Fixes
 
-* **homepage:** add avatar border and adjust hero spacing ([#23](https://github.com/milliorn/fitness-tracker/issues/23)) ([9376f4d](https://github.com/milliorn/fitness-tracker/commit/9376f4d2bb8a54c29feb492092117f9ce4a672b6))
+- **homepage:** add avatar border and adjust hero spacing ([#23](https://github.com/milliorn/fitness-tracker/issues/23)) ([9376f4d](https://github.com/milliorn/fitness-tracker/commit/9376f4d2bb8a54c29feb492092117f9ce4a672b6))
 
 ## [1.1.0](https://github.com/milliorn/fitness-tracker/compare/v1.0.0...v1.1.0) (2025-10-11)
 
