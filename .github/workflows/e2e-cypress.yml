@@ -50,6 +50,8 @@ jobs:
           wait-on: "http://localhost:3000"
           # Use your existing script so versions/config stay in one place
           command: npm run cy:run:e2e
+          # Don't run npm ci twice
+          install: false
           # If component testing is necessary you can add: component: true
 
       # Always upload Cypress artifacts if present (helpful for debugging)
