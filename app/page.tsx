@@ -36,7 +36,6 @@ export default function Home() {
           }}
         />
 
-
         <Stack
           id="home-login-register-buttons"
           direction={"row"}
