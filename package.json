@@ -7,7 +7,8 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-    "format": "eslint . --ext .js,.jsx,.ts,.tsx --fix"
+    "format": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
     "@emotion/cache": "^11.14.0",
