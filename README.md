@@ -60,3 +60,11 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ## Conventional Commits
 
 <https://www.conventionalcommits.org/en/v1.0.0/>
+
+## Nextjs Guides for Testing
+
+<https://nextjs.org/docs/pages/guides/testing>
+
+## How to set up Cypress with Next.js
+
+<https://nextjs.org/docs/pages/guides/testing/cypress>
