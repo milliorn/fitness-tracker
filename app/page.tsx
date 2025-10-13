@@ -8,6 +8,7 @@ export default function Home() {
     <Box
       component="main"
       sx={{
+        paddingBottom: "4rem",
         minHeight: "100vh",
         display: "flex",
         justifyContent: "center",
