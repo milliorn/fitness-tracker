@@ -68,3 +68,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ## How to set up Cypress with Next.js
 
 <https://nextjs.org/docs/pages/guides/testing/cypress>
+
+## GitHub Action for running Cypress
+
+<https://github.com/cypress-io/github-action>
