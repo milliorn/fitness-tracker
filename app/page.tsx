@@ -28,10 +28,13 @@ export default function Home() {
           alt="Homepage Logo"
           src="/monolith.webp"
           sx={{
-            width: [160, 200, 240, 280, 320],
+            border: "1px solid",
+            borderColor: "common.white",
             height: [160, 200, 240, 280, 320],
+            width: [160, 200, 240, 280, 320],
           }}
         />
+
 
         <Stack
           id="home-login-register-buttons"
@@ -42,10 +45,10 @@ export default function Home() {
           <Button
             variant="outlined"
             sx={{
-              borderRadius: "9999px",
-              px: 2,
-              color: "common.white",
               borderColor: "common.white",
+              borderRadius: "9999px",
+              color: "common.white",
+              px: 4,
               "&:hover": { borderColor: "common.white" },
             }}
           >
@@ -54,10 +57,10 @@ export default function Home() {
           <Button
             variant="outlined"
             sx={{
-              borderRadius: "9999px",
-              px: 2,
-              color: "common.white",
               borderColor: "common.white",
+              borderRadius: "9999px",
+              color: "common.white",
+              px: 4,
               "&:hover": { borderColor: "common.white" },
             }}
           >
