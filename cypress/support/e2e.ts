@@ -14,5 +14,7 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import "./commands";
 import 'cypress-axe';
+import 'cypress-real-events/support';
+import "./commands";
+import '@testing-library/cypress/add-commands'; // add if you use findByRole

@@ -33,6 +33,7 @@
     "axe-core": "^4.11.0",
     "cypress": "^15.4.0",
     "cypress-axe": "^1.7.0",
+    "cypress-real-events": "^1.15.0",
     "eslint": "^9",
     "eslint-config-next": "15.5.4",
     "typescript": "^5"
