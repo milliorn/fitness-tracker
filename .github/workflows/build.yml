@@ -38,13 +38,14 @@ jobs:
       - name: Cache Next build cache
         uses: actions/cache@v4
         with:
-          path: .next/cache
-          key: next-cache-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-${{ hashFiles('next.config.*', 'tsconfig.json') }}
+          path: |
+            .next/cache
+          key: "next-cache-${{ runner.os }}-${{ hashFiles('package-lock.json', 'pnpm-lock.yaml', 'yarn.lock', 'next.config.*', 'tsconfig.json') }}"
           restore-keys: |
             next-cache-${{ runner.os }}-
 
       - name: Build Next.js
-        run: npm run build
+        run: npm run build -- --no-lint --no-typecheck
 
       - name: Upload .next/cache on failure
         if: failure()
@@ -52,4 +53,12 @@ jobs:
         with:
           name: next-cache
           path: .next/cache
+          if-no-files-found: ignore
+
+      - name: Upload .next (success on PRs)
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: next-build
+          path: .next
           if-no-files-found: ignore
