@@ -18,6 +18,8 @@ concurrency:
 jobs:
   e2e:
     runs-on: ubuntu-latest
+    # The maximum number of minutes to let a workflow run before GitHub automatically cancels it. Default: 360
+    timeout-minutes: 20
 
     env:
       CI: true
@@ -48,12 +50,18 @@ jobs:
           restore-keys: |
             next-cache-${{ runner.os }}-
 
-      # Cache Cypress binary so it doesn't re-download/verify each run
+      # Read the exact Cypress version from the lockfile to make the cache reusable across branches/dep bumps
+      - name: Extract Cypress version
+        id: cver
+        run: |
+          echo "version=$(node -e "const l=require('./package-lock.json');const v=l.packages?.['node_modules/cypress']?.version||'';process.stdout.write(v)")" >> "$GITHUB_OUTPUT"
+
+      # Cache Cypress binary by OS + Cypress version
       - name: Cache Cypress binary
         uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: cypress-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+          key: cypress-${{ runner.os }}-${{ steps.cver.outputs.version }}
           restore-keys: |
             cypress-${{ runner.os }}-
 
@@ -73,8 +81,10 @@ jobs:
           # Don't run npm ci twice
           install: false
           # component: true  # enable if you add component tests
+          publish-summary: true
 
-      # Upload Cypress artifacts on failure (useful for debugging)
+
+      # Upload artifacts on failure (debug)
       - name: Upload screenshots (if any)
         if: failure()
         uses: actions/upload-artifact@v4
