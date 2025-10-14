@@ -45,7 +45,7 @@ jobs:
             next-cache-${{ runner.os }}-
 
       - name: Build Next.js
-        run: npm run build -- --no-lint --no-typecheck
+        run: npm run build -- --no-lint
 
       - name: Upload .next/cache on failure
         if: failure()
