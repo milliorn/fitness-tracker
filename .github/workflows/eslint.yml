@@ -5,15 +5,24 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+    paths-ignore:
+      - "**/*.md"
+      - ".github/ISSUE_TEMPLATE/**"
 
 permissions:
   contents: read
   security-events: write
 
+concurrency:
+  group: lint-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   lint:
     name: Run ESLint
     runs-on: ubuntu-latest
+    env:
+      CI: true
 
     steps:
       - name: Checkout repository
@@ -22,25 +31,77 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
-          cache: "npm"
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            **/package-lock.json
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --no-audit --no-fund --prefer-offline
 
-      - name: Install ESLint SARIF formatter
+      # collect deps into an output so we can test for the formatter
+      - name: Read package.json deps
+        id: pkg
+        shell: bash
+        run: |
+          set -euo pipefail
+          DEPS=$(node -e "const fs=require('fs');let p={};try{p=JSON.parse(fs.readFileSync('package.json','utf8'))}catch{};const d={...(p.dependencies||{}),...(p.devDependencies||{})};process.stdout.write(Object.keys(d).join(','));")
+          echo "deps=$DEPS" >> "$GITHUB_OUTPUT"
+
+      # Only install the SARIF formatter if it's not already in deps/devDeps
+      # (use '|| ''' to keep editors from warning about possibly-undefined output)
+      - name: Install ESLint SARIF formatter (fallback)
+        if: ${{ !contains(steps.pkg.outputs.deps || '', '@microsoft/eslint-formatter-sarif') }}
         run: npm install --no-save @microsoft/eslint-formatter-sarif
 
+      # Restore eslint cache
+      - name: Restore ESLint cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            .eslintcache
+            **/.eslintcache
+          # combine hashFiles into one call; quote the whole key (calms VS Code)
+          key: "eslint-${{ runner.os }}-${{ hashFiles('package-lock.json', '.eslintrc*', 'eslint.config.*', 'tsconfig.json') }}"
+          restore-keys: |
+            eslint-${{ runner.os }}-
+
       - name: Run ESLint (SARIF)
+        id: eslint
+        continue-on-error: true
+        shell: bash
         run: |
+          set +e
           npx eslint . \
             --ext .js,.jsx,.ts,.tsx \
+            --cache --cache-location .eslintcache --cache-strategy content \
+            --report-unused-disable-directives \
             --format node_modules/@microsoft/eslint-formatter-sarif/sarif.js \
             --output-file eslint-results.sarif
-        continue-on-error: true
+          echo "exitcode=$?" >> "$GITHUB_OUTPUT"
+          exit 0
 
-      - name: Upload ESLint results
-        if: github.event_name == 'push' # only upload on push, not PRs from forks
+      # Single uploader: pushes and PRs from same repo
+      - name: Upload ESLint SARIF to Code Scanning
+        if: >
+          github.event_name == 'push' ||
+          (github.event_name == 'pull_request' &&
+           github.event.pull_request.head.repo.fork == false)
         uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: eslint-results.sarif
+
+      # Forked PRs: attach SARIF as artifact (no code scanning perms on forks)
+      - name: Upload SARIF artifact (PRs)
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork == true
+        uses: actions/upload-artifact@v4
+        with:
+          name: eslint-results.sarif
+          path: eslint-results.sarif
+          if-no-files-found: warn
+
+      # On pushes, fail the job if ESLint had errors
+      - name: Fail job on ESLint errors (push only)
+        if: github.event_name == 'push' && steps.eslint.outputs.exitcode != '0'
+        run: exit 1

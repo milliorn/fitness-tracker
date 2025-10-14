@@ -4,27 +4,62 @@ on:
   push:
     branches: [main]
   pull_request:
+    branches: [main]
+    paths-ignore:
+      - "**/*.md"
+      - ".github/ISSUE_TEMPLATE/**"
+
+# Ensure only one build per ref runs at a time
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      CI: true
+      NEXT_TELEMETRY_DISABLED: 1
 
     steps:
-      # 1. Checkout your repository
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2. Use correct version (match .nvmrc or package.json "engines")
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: "npm"
+          node-version: 24
+          cache: npm
 
-      # 3. Install dependencies
       - name: Install dependencies
         run: npm ci
 
-      # 4. Build Next.js project
+      # Restore cache before building
+      - name: Cache Next build cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            .next/cache
+          key: "next-cache-${{ runner.os }}-${{ hashFiles('package-lock.json', 'pnpm-lock.yaml', 'yarn.lock', 'next.config.*', 'tsconfig.json') }}"
+          restore-keys: |
+            next-cache-${{ runner.os }}-
+
       - name: Build Next.js
-        run: npm run build
+        run: npm run build -- --no-lint
+
+      - name: Upload .next/cache on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: next-cache
+          path: .next/cache
+          if-no-files-found: ignore
+
+      - name: Upload .next (success on PRs)
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: next-build
+          path: .next
+          include-hidden-files: true
+          if-no-files-found: ignore
