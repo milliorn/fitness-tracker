@@ -32,7 +32,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "24"
-          cache: "npm"
+          cache: npm
           cache-dependency-path: |
             package-lock.json
             **/package-lock.json
@@ -50,8 +50,9 @@ jobs:
           echo "deps=$DEPS" >> "$GITHUB_OUTPUT"
 
       # Only install the SARIF formatter if it's not already in deps/devDeps
+      # (use '|| ''' to keep editors from warning about possibly-undefined output)
       - name: Install ESLint SARIF formatter (fallback)
-        if: ${{ !contains(steps.pkg.outputs.deps, '@microsoft/eslint-formatter-sarif') }}
+        if: ${{ !contains(steps.pkg.outputs.deps || '', '@microsoft/eslint-formatter-sarif') }}
         run: npm install --no-save @microsoft/eslint-formatter-sarif
 
       # Restore eslint cache
@@ -81,21 +82,26 @@ jobs:
           echo "exitcode=$?" >> "$GITHUB_OUTPUT"
           exit 0
 
-      - name: Upload ESLint results
-        if: github.event_name == 'push'
+      # Single uploader: pushes and PRs from same repo
+      - name: Upload ESLint SARIF to Code Scanning
+        if: >
+          github.event_name == 'push' ||
+          (github.event_name == 'pull_request' &&
+           github.event.pull_request.head.repo.fork == false)
         uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: eslint-results.sarif
 
+      # Forked PRs: attach SARIF as artifact (no code scanning perms on forks)
       - name: Upload SARIF artifact (PRs)
-        if: github.event_name != 'push'
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork == true
         uses: actions/upload-artifact@v4
         with:
           name: eslint-results.sarif
           path: eslint-results.sarif
           if-no-files-found: warn
-          retention-days: 7
 
+      # On pushes, fail the job if ESLint had errors
       - name: Fail job on ESLint errors (push only)
         if: github.event_name == 'push' && steps.eslint.outputs.exitcode != '0'
         run: exit 1
