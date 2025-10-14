@@ -58,12 +58,11 @@ jobs:
 
       # Cache Cypress binary by OS + Cypress version
       - name: Cache Cypress binary
+        if: ${{ steps.cver.outputs.version != '' }}
         uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
           key: cypress-${{ runner.os }}-${{ steps.cver.outputs.version }}
-          restore-keys: |
-            cypress-${{ runner.os }}-
 
       # Build Next.js app
       - name: Build app
@@ -82,7 +81,6 @@ jobs:
           install: false
           # component: true  # enable if you add component tests
           publish-summary: true
-
 
       # Upload artifacts on failure (debug)
       - name: Upload screenshots (if any)
