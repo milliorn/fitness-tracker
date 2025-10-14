@@ -20,9 +20,10 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      # Keep CI logs clean & disable Next telemetry in CI
       CI: true
       NEXT_TELEMETRY_DISABLED: 1
+      # Be explicit (this is Cypress' default on Linux, but makes caching clearer)
+      CYPRESS_CACHE_FOLDER: ~/.cache/Cypress
 
     steps:
       - name: Checkout
@@ -32,10 +33,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: "npm"
+          cache: npm
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --prefer-offline --no-audit --no-fund
 
       # Restore Next build cache *before* building
       - name: Cache Next build cache
@@ -45,6 +47,15 @@ jobs:
           key: next-cache-${{ runner.os }}-${{ hashFiles('package-lock.json') }}-${{ hashFiles('next.config.*', 'tsconfig.json') }}
           restore-keys: |
             next-cache-${{ runner.os }}-
+
+      # Cache Cypress binary so it doesn't re-download/verify each run
+      - name: Cache Cypress binary
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            cypress-${{ runner.os }}-
 
       # Build Next.js app
       - name: Build app
@@ -61,9 +72,9 @@ jobs:
           command: npm run cy:run:e2e
           # Don't run npm ci twice
           install: false
-          # If component testing is necessary you can add: component: true
+          # component: true  # enable if you add component tests
 
-      # Always upload Cypress artifacts if present (helpful for debugging)
+      # Upload Cypress artifacts on failure (useful for debugging)
       - name: Upload screenshots (if any)
         if: failure()
         uses: actions/upload-artifact@v4
