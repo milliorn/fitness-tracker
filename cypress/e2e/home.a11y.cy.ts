@@ -1,8 +1,6 @@
-// cypress/e2e/home.a11y.cy.ts
-
 describe("Home CTA accessibility", () => {
   it("focus order Login -> Register", () => {
-    cy.visit("/");
+    cy.visitHome();
 
     // Make sure the window & document have focus before tabbing
     cy.window().then((w) => w.focus());
@@ -23,5 +21,29 @@ describe("Home CTA accessibility", () => {
         expect($el.prop("tagName")).to.eq("BUTTON");
       })
       .should("contain.text", "Register");
+  });
+
+  it("Avatar has alt text", () => {
+    cy.visitHome();
+
+    // Scope to the main region your page renders
+    cy.get("main").within(() => {
+      // Strict check: exact alt value
+      cy.get('img[alt="Homepage Logo"]').should("exist");
+
+      // Or: just ensure a non-empty alt is present
+      cy.get("img[alt]").should("have.attr", "alt").and("match", /\S/);
+
+      // Optional: also verify src
+      cy.get('img[alt="Homepage Logo"]')
+        .should("have.attr", "src")
+        .and("include", "/monolith.webp");
+    });
+  });
+
+  it("Home passes WCAG A/AA audit", () => {
+    cy.visitHome();
+    cy.injectAxe();
+    cy.checkA11y(undefined, { runOnly: ["wcag2a", "wcag2aa"] });
   });
 });
