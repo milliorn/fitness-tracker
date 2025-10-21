@@ -72,3 +72,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ## GitHub Action for running Cypress
 
 <https://github.com/cypress-io/github-action>
+
+## Material-UI API Avatar
+
+<https://mui.com/material-ui/api/avatar/>
