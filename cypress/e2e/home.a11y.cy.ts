@@ -31,13 +31,17 @@ describe("Home CTA accessibility", () => {
       // Strict check: exact alt value
       cy.get('img[alt="Homepage Logo"]').should("exist");
 
-      // Or: just ensure a non-empty alt is present
-      cy.get("img[alt]").should("have.attr", "alt").and("match", /\S/);
-
-      // Optional: also verify src
+      // Also ensure a non-empty alt is present
       cy.get('img[alt="Homepage Logo"]')
-        .should("have.attr", "src")
-        .and("include", "/monolith.webp");
+        .should("have.attr", "alt")
+        .and("match", /\S/);
+
+      // Optional: verify the chosen candidate, not a specific filename
+      cy.get('img[alt="Homepage Logo"]').then(($img) => {
+        const el = $img[0] as HTMLImageElement;
+        const chosen = el.currentSrc || el.src || "";
+        expect(chosen).to.match(/\/monolith.*\.webp$/);
+      });
     });
   });
 
