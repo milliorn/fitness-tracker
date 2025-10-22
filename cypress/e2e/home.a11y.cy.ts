@@ -4,10 +4,12 @@ describe("Home CTA accessibility", () => {
 
     // Make sure the window & document have focus before tabbing
     cy.window().then((w) => w.focus());
+
     cy.get("body").click(0, 0); // prime focus in headless runs
 
     // Use real keyboard events if available
     cy.realPress("Tab");
+
     cy.focused()
       .should(($el) => {
         // It's a real <button>
@@ -16,6 +18,7 @@ describe("Home CTA accessibility", () => {
       .should("contain.text", "Login");
 
     cy.realPress("Tab");
+
     cy.focused()
       .should(($el) => {
         expect($el.prop("tagName")).to.eq("BUTTON");
@@ -31,13 +34,17 @@ describe("Home CTA accessibility", () => {
       // Strict check: exact alt value
       cy.get('img[alt="Homepage Logo"]').should("exist");
 
-      // Or: just ensure a non-empty alt is present
-      cy.get("img[alt]").should("have.attr", "alt").and("match", /\S/);
-
-      // Optional: also verify src
+      // Also ensure a non-empty alt is present
       cy.get('img[alt="Homepage Logo"]')
-        .should("have.attr", "src")
-        .and("include", "/monolith.webp");
+        .should("have.attr", "alt")
+        .and("match", /\S/);
+
+      // Optional: verify the chosen candidate, not a specific filename
+      cy.get('img[alt="Homepage Logo"]').then(($img) => {
+        const el = $img[0] as HTMLImageElement;
+        const chosen = el.currentSrc || el.src || "";
+        expect(chosen).to.match(/\/monolith.*\.webp$/);
+      });
     });
   });
 

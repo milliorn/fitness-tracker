@@ -1,26 +1,26 @@
-// Verifies the MUI Avatar renders an <img>, points at the right URL,
-// and that the browser actually decoded it (naturalWidth > 0).
+// cypress/e2e/app.cy.ts
+
+// Verifies the MUI Avatar renders an <img>, the browser decodes it,
+// and the chosen candidate is a monolith WebP (srcset-safe).
 
 describe("Home avatar", () => {
   it("shows and loads the monolith image", () => {
     cy.visit("/");
 
-    // MUI Avatar renders an <img> when `src` is provided
-    cy.get('img[alt="Homepage Logo"]', { timeout: 10000 })
-      .should("be.visible")
-      // sanity: correct path (works whether absolute or relative)
-      .should("have.attr", "src")
-      .then((src) => {
-        expect(src).to.include("/monolith.webp");
-      });
-
-    // ensure image finished loading and decoded successfully
-    cy.get('img[alt="Homepage Logo"]').should(($img) => {
+    // Single retryable assertion: Cypress keeps retrying until ALL pass.
+    cy.get('img[alt="Homepage Logo"]', { timeout: 10000 }).should(($img) => {
       const el = $img[0] as HTMLImageElement;
-      // the image finished loading
+
+      // Prove the image actually finished loading & decoding
       expect(el.complete, "image is complete").to.eq(true);
-      // decoded: 0 means broken/missing
       expect(el.naturalWidth, "image naturalWidth").to.be.greaterThan(0);
+
+      // Be robust to srcset + absolute/relative URLs (+ optional query strings)
+      const chosen = el.currentSrc || el.src || "";
+      expect(
+        chosen,
+        `chosen src (${chosen}) should be a monolith webp`,
+      ).to.match(/\/monolith.*\.webp(?:\?.*)?$/);
     });
   });
 
