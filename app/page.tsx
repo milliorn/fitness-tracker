@@ -31,22 +31,24 @@ export default function Home() {
           // Keep the fallback modest to avoid oversized speculative fetches
           src="/monolith-320.webp"
           // Candidates cover 160→320px slots across DPR 2–3
-          srcSet={[
-            "/monolith-320.webp 320w",  // 160px @ 2x
-            "/monolith-400.webp 400w",
-            "/monolith-480.webp 480w",  // 160px @ 3x or 240px @ 2x
-            "/monolith-560.webp 560w",
-            "/monolith-640.webp 640w",  // 320px @ 2x
-            "/monolith-960.webp 960w",  // 320px @ 3x (iPhone 12/14 Pro/Max, some Plus models)
-          ].join(", ")}
-          // Mirror your sx widths (xs→xl). Browser picks the right candidate.
-          sizes="(min-width: 1536px) 320px,
-         (min-width: 1200px) 280px,
-         (min-width: 900px) 240px,
-         (min-width: 600px) 200px,
-         160px"
           slotProps={{
             img: {
+              // Candidates cover 160→320px slots across DPR 2–3
+              srcSet: [
+                "/monolith-320.webp 320w", // 160px @ 2x
+                "/monolith-400.webp 400w",
+                "/monolith-480.webp 480w", // 160px @ 3x or 240px @ 2x
+                "/monolith-560.webp 560w",
+                "/monolith-640.webp 640w", // 320px @ 2x
+                "/monolith-960.webp 960w", // 320px @ 3x (iPhone 12/14 Pro/Max, some Plus models)
+              ].join(", "),
+              // Mirror your sx widths (xs→xl). Browser picks the right candidate.
+              sizes:
+                "(min-width: 1536px) 320px, " +
+                "(min-width: 1200px) 280px, " +
+                "(min-width: 900px) 240px, " +
+                "(min-width: 600px) 200px, " +
+                "160px",
               loading: 'lazy',
               ...({ decoding: 'async' } as unknown as React.ImgHTMLAttributes<HTMLImageElement>),
             },
