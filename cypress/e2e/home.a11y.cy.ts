@@ -4,10 +4,12 @@ describe("Home CTA accessibility", () => {
 
     // Make sure the window & document have focus before tabbing
     cy.window().then((w) => w.focus());
+
     cy.get("body").click(0, 0); // prime focus in headless runs
 
     // Use real keyboard events if available
     cy.realPress("Tab");
+
     cy.focused()
       .should(($el) => {
         // It's a real <button>
@@ -16,6 +18,7 @@ describe("Home CTA accessibility", () => {
       .should("contain.text", "Login");
 
     cy.realPress("Tab");
+
     cy.focused()
       .should(($el) => {
         expect($el.prop("tagName")).to.eq("BUTTON");

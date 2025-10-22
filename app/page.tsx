@@ -25,7 +25,6 @@ export default function Home() {
           width: "100%",
         }}
       >
-
         <Avatar
           alt="Homepage Logo"
           // Keep the fallback modest to avoid oversized speculative fetches
@@ -49,14 +48,15 @@ export default function Home() {
                 "(min-width: 900px) 240px, " +
                 "(min-width: 600px) 200px, " +
                 "160px",
-              loading: 'lazy',
-              ...({ decoding: 'async' } as unknown as React.ImgHTMLAttributes<HTMLImageElement>),
+              loading: "lazy",
+              ...({
+                decoding: "async",
+              } as unknown as React.ImgHTMLAttributes<HTMLImageElement>),
             },
           }}
-
           sx={{
-            border: '1px solid',
-            borderColor: 'common.white',
+            border: "1px solid",
+            borderColor: "common.white",
             height: [160, 200, 240, 280, 320],
             width: [160, 200, 240, 280, 320],
           }}
