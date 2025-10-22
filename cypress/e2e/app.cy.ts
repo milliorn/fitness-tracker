@@ -10,8 +10,11 @@ describe("Home avatar", () => {
       .should("be.visible")
       // sanity: correct path (works whether absolute or relative)
       .should("have.attr", "src")
-      .then((src) => {
-        expect(src).to.include("/monolith.webp");
+      .then(($img) => {
+        const el = $img[0] as HTMLImageElement;
+        // Prove we loaded a monolith webp candidate, regardless of src/srcset pick
+        const chosen = el.currentSrc || el.src || "";
+        expect(chosen).to.match(/\/monolith.*\.webp$/);
       });
 
     // ensure image finished loading and decoded successfully
