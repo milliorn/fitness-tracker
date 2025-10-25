@@ -76,3 +76,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ## Material-UI API Avatar
 
 <https://mui.com/material-ui/api/avatar/>
+
+## CSS Baseline
+
+<https://mui.com/material-ui/react-css-baseline/>

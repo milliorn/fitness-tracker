@@ -1,24 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
+
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
+import MuiTheme from "./MuiTheme";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
-  title: "Fitness App",
+  title: "GymScry App",
   description: "Future Fitness App",
 };
 
@@ -29,8 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <AppRouterCacheProvider>{children}</AppRouterCacheProvider>{" "}
+      <body>
+        <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+          <MuiTheme>{children}</MuiTheme>
+        </AppRouterCacheProvider>{" "}
       </body>
     </html>
   );
