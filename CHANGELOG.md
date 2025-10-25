@@ -2,10 +2,9 @@
 
 ## [1.1.2](https://github.com/milliorn/fitness-tracker/compare/v1.1.1...v1.1.2) (2025-10-22)
 
-
 ### Performance Improvements
 
-* **homepage:** responsive Avatar srcset/sizes with lazy decode ([#28](https://github.com/milliorn/fitness-tracker/issues/28)) ([ad5013a](https://github.com/milliorn/fitness-tracker/commit/ad5013afbe9423faf12590d691a64256cdf145af))
+- **homepage:** responsive Avatar srcset/sizes with lazy decode ([#28](https://github.com/milliorn/fitness-tracker/issues/28)) ([ad5013a](https://github.com/milliorn/fitness-tracker/commit/ad5013afbe9423faf12590d691a64256cdf145af))
 
 ## [1.1.1](https://github.com/milliorn/fitness-tracker/compare/v1.1.0...v1.1.1) (2025-10-13)
 
