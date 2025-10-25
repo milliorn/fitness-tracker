@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import MuiTheme from "./MuiTheme";
 
-
 export const metadata: Metadata = {
   title: "GymScry App",
   description: "Future Fitness App",

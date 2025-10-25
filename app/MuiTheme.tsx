@@ -6,8 +6,12 @@ import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 const theme = createTheme({
   palette: {
     mode: "dark",
-    background: { default: ({ background: "#0a0a0a", foreground: "#ededed" }).background },
-    text: { primary: ({ background: "#0a0a0a", foreground: "#ededed" }).foreground },
+    background: {
+      default: { background: "#0a0a0a", foreground: "#ededed" }.background,
+    },
+    text: {
+      primary: { background: "#0a0a0a", foreground: "#ededed" }.foreground,
+    },
   },
 });
 
