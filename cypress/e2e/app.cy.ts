@@ -19,7 +19,7 @@ describe("Home avatar", () => {
       const chosen = el.currentSrc || el.src || "";
       expect(
         chosen,
-        `chosen src (${chosen}) should be a monolith webp`
+        `chosen src (${chosen}) should be a monolith webp`,
       ).to.match(/\/monolith.*\.webp(?:\?.*)?$/);
     });
   });
