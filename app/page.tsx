@@ -83,6 +83,7 @@ export default function Home() {
             Login
           </Button>
           <Button
+            component={Link} href="/register"
             variant="outlined"
             sx={{
               borderColor: "common.white",
