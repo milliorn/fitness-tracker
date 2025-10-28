@@ -2,10 +2,9 @@
 
 ## [1.2.0](https://github.com/milliorn/fitness-tracker/compare/v1.1.2...v1.2.0) (2025-10-25)
 
-
 ### Features
 
-* **ui:** add login page and default dark theme ([#30](https://github.com/milliorn/fitness-tracker/issues/30)) ([600e621](https://github.com/milliorn/fitness-tracker/commit/600e621edd0b273822a253a892723f23ab88b06d))
+- **ui:** add login page and default dark theme ([#30](https://github.com/milliorn/fitness-tracker/issues/30)) ([600e621](https://github.com/milliorn/fitness-tracker/commit/600e621edd0b273822a253a892723f23ab88b06d))
 
 ## [1.1.2](https://github.com/milliorn/fitness-tracker/compare/v1.1.1...v1.1.2) (2025-10-22)
 
