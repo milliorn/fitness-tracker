@@ -71,6 +71,7 @@ export default function Home() {
         >
           <Button
             component={Link} href="/login"
+            data-cy="login-cta"
             variant="outlined"
             sx={{
               borderColor: "common.white",
@@ -83,7 +84,7 @@ export default function Home() {
             Login
           </Button>
           <Button
-            component={Link} href="/register"
+            component={Link} href="/register" data-cy="register-cta"
             variant="outlined"
             sx={{
               borderColor: "common.white",

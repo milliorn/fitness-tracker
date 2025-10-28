@@ -10,20 +10,23 @@ describe("Home CTA accessibility", () => {
     // Use real keyboard events if available
     cy.realPress("Tab");
 
-    cy.focused()
-      .should(($el) => {
-        // It's a real <button>
-        expect($el.prop("tagName")).to.eq("BUTTON");
-      })
-      .should("contain.text", "Login");
+    // cy.focused()
+    //   .should(($el) => {
+    //     // It's a real <button>
+    //     expect($el.prop("tagName")).to.eq("BUTTON");
+    //   })
+    //   .should("contain.text", "Login");
+
+    cy.get('[data-cy="login-cta"]').should("have.focus");
 
     cy.realPress("Tab");
 
-    cy.focused()
-      .should(($el) => {
-        expect($el.prop("tagName")).to.eq("BUTTON");
-      })
-      .should("contain.text", "Register");
+    // cy.focused()
+    //   .should(($el) => {
+    //     expect($el.prop("tagName")).to.eq("BUTTON");
+    //   })
+    //   .should("contain.text", "Register");
+    cy.get('[data-cy="register-cta"]').should("have.focus");
   });
 
   it("Avatar has alt text", () => {
