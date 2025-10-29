@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/milliorn/fitness-tracker/compare/v1.2.0...v1.3.0) (2025-10-29)
+
+
+### Features
+
+* **ui:** add login page and convert homepage CTAs to real links ([#32](https://github.com/milliorn/fitness-tracker/issues/32)) ([e9ea713](https://github.com/milliorn/fitness-tracker/commit/e9ea7137a115be8a7219a366202a9007fe946f28))
+
 ## [1.2.0](https://github.com/milliorn/fitness-tracker/compare/v1.1.2...v1.2.0) (2025-10-25)
 
 ### Features
