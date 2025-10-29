@@ -32,7 +32,7 @@ export default function LoginPage() {
         p: 2,
       }}
     >
-      <Stack spacing={2} sx={{ width: "100%", maxWidth: 360 }}>
+      <Stack spacing={2} sx={{ width: "100%", maxWidth: 320 }}>
         {/* Back to Home */}
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
           <IconButton
@@ -47,7 +47,7 @@ export default function LoginPage() {
             component={Link}
             href="/"
             underline="hover"
-            sx={{ fontSize: 14 }}
+            sx={{ fontSize: 16 }}
           >
             Back to Home
           </MUILink>
@@ -78,7 +78,7 @@ export default function LoginPage() {
               onChange={(e) => setEmail(e.target.value)}
               fullWidth
               required
-              InputLabelProps={{ shrink: true }}
+              slotProps={{ inputLabel: { shrink: true } }}
             />
 
             <TextField
@@ -89,14 +89,14 @@ export default function LoginPage() {
               onChange={(e) => setPassword(e.target.value)}
               fullWidth
               required
-              InputLabelProps={{ shrink: true }}
+              slotProps={{ inputLabel: { shrink: true } }}
             />
 
             <Button
               type="submit"
               variant="contained"
               fullWidth
-              sx={{ py: 1.25, textTransform: "none", fontWeight: 600 }}
+              sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
             >
               Log in
             </Button>
