@@ -1,15 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import {
   Box,
   Button,
+  IconButton,
   Stack,
   TextField,
   Typography,
   Link as MUILink,
 } from "@mui/material";
-import Link from "next/link";
+import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -23,46 +25,96 @@ export default function LoginPage() {
   return (
     <Box
       component="main"
-      sx={{ display: "grid", placeItems: "center", minHeight: "100dvh" }}
+      sx={{
+        minHeight: "100dvh",
+        display: "grid",
+        placeItems: "center",
+        p: 2,
+      }}
     >
-      <Box
-        component="form"
-        onSubmit={onSubmit}
-        sx={{ width: "100%", maxWidth: 300 }}
-      >
-        <Stack spacing={4}>
-          <Typography variant="h4" component="h1">
-            Log in
-          </Typography>
-          <TextField
-            label="Email"
-            type="email"
-            autoComplete="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            fullWidth
-            required
-          />
-          <TextField
-            label="Password"
-            type="password"
-            autoComplete="current-password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            fullWidth
-            required
-          />
-          <Button type="submit" variant="contained">
-            Log in
-          </Button>
-          <Typography variant="body2">
-            Don’t have an account?{" "}
-            <MUILink component={Link} href="/register" underline="hover">
-              Register
-            </MUILink>
-          </Typography>
-        </Stack>
-      </Box>
+      <Stack spacing={2} sx={{ width: "100%", maxWidth: 360 }}>
+        {/* Back to Home */}
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <IconButton
+            component={Link}
+            href="/"
+            aria-label="Back to Home"
+            size="large"
+          >
+            <ArrowCircleLeftIcon fontSize="large" />
+          </IconButton>
+          <MUILink
+            component={Link}
+            href="/"
+            underline="hover"
+            sx={{ fontSize: 14 }}
+          >
+            Back to Home
+          </MUILink>
+        </Box>
+
+        {/* Form */}
+        <Box
+          component="form"
+          onSubmit={onSubmit}
+          sx={{
+            p: 3,
+            borderRadius: 3,
+            boxShadow: 8,
+            bgcolor: "background.paper",
+          }}
+        >
+          <Stack spacing={3}>
+            <Typography variant="h4" component="h1">
+              Log in
+            </Typography>
+
+            {/* Shrink labels = better contrast on dark */}
+            <TextField
+              label="Email"
+              type="email"
+              autoComplete="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              fullWidth
+              required
+              InputLabelProps={{ shrink: true }}
+            />
+
+            <TextField
+              label="Password"
+              type="password"
+              autoComplete="current-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              fullWidth
+              required
+              InputLabelProps={{ shrink: true }}
+            />
+
+            <Button
+              type="submit"
+              variant="contained"
+              fullWidth
+              sx={{ py: 1.25, textTransform: "none", fontWeight: 600 }}
+            >
+              Log in
+            </Button>
+
+            <Typography variant="body2" sx={{ textAlign: "center" }}>
+              Don’t have an account?{" "}
+              <MUILink
+                component={Link}
+                href="/register"
+                underline="hover"
+                data-cy="register-cta"
+              >
+                Register
+              </MUILink>
+            </Typography>
+          </Stack>
+        </Box>
+      </Stack>
     </Box>
   );
 }
