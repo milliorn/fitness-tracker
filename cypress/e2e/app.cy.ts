@@ -27,8 +27,15 @@ describe("Home avatar", () => {
   it("has the login/register buttons next to the avatar", () => {
     cy.visit("/");
     cy.get("#home-login-register-buttons").within(() => {
-      cy.contains("button", /login/i).should("be.visible");
-      cy.contains("button", /register/i).should("be.visible");
+      //   cy.contains("button", /login/i).should("be.visible").and("have.attr", "href", "/login");
+      //   cy.contains("button", /register/i).should("be.visible").and("have.attr", "href", "/register");
+      cy.get('[data-cy="login-cta"]')
+        .should("be.visible")
+        .and("have.attr", "href", "/login");
+
+      cy.get('[data-cy="register-cta"]')
+        .should("be.visible")
+        .and("have.attr", "href", "/register");
     });
   });
 });

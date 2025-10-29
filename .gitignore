@@ -39,3 +39,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+cypress/screenshots/app.cy.ts/Home avatar -- has the loginregister buttons next to the avatar (failed).png
+cypress/screenshots/home.a11y.cy.ts/Home CTA accessibility -- focus order Login - Register (failed).png

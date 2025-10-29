@@ -2,6 +2,7 @@ import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -69,6 +70,9 @@ export default function Home() {
           sx={{ alignItems: "center", justifyContent: "center", width: "100%" }}
         >
           <Button
+            component={Link}
+            href="/login"
+            data-cy="login-cta"
             variant="outlined"
             sx={{
               borderColor: "common.white",
@@ -81,6 +85,9 @@ export default function Home() {
             Login
           </Button>
           <Button
+            component={Link}
+            href="/register"
+            data-cy="register-cta"
             variant="outlined"
             sx={{
               borderColor: "common.white",
