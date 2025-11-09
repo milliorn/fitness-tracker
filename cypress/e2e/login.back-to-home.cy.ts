@@ -1,12 +1,6 @@
-const goToLogin = () => {
-  cy.visitHome();
-  cy.get('[data-cy="login-cta"]').click();
-  cy.location("pathname").should("eq", "/login");
-};
-
 describe("Login → Back to Home", () => {
   beforeEach(() => {
-    goToLogin();
+    cy.openLoginFromHome();
   });
 
   it("IconButton goes Home", () => {

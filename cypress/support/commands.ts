@@ -66,8 +66,19 @@ Cypress.Commands.add(
 
     // Return a Chainable
     return cy.wrap(subject as JQuery<HTMLImageElement>);
-  },
+  }
 );
+
+Cypress.Commands.add("openLoginFromHome", () => {
+  cy.visitHome();
+  cy.get('[data-cy="login-cta"]').click();
+  cy.location("pathname").should("eq", "/login");
+});
+
+Cypress.Commands.add("visitLogin", () => {
+  cy.visit("/login");
+  cy.location("pathname").should("eq", "/login");
+});
 
 // ---- Utilities for focus-driven tests ----
 Cypress.Commands.add("primeFocus", () => {
@@ -94,6 +105,12 @@ declare global {
 
       /** Prepare focus for keyboard navigation tests. */
       primeFocus(): Chainable<void>;
+
+      /** Home → click Login CTA → assert /login */
+      openLoginFromHome(): Chainable<Element>;
+
+      /** Directly visit /login and assert */
+      visitLogin(): Chainable<Element>;
     }
   }
 }
