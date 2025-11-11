@@ -11,7 +11,7 @@ import {
   Link as MUILink,
   Alert,
 } from "@mui/material";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import { FormEvent, useState } from "react";
 
 export default function RegisterPage() {
@@ -76,7 +76,7 @@ export default function RegisterPage() {
             size="large"
             data-cy="back-to-home-icon"
           >
-            <ArrowBackIcon fontSize="large" />
+            <ArrowCircleLeftIcon fontSize="large" />
           </IconButton>
           <MUILink component={NextLink} href="/" underline="hover" sx={{ fontSize: 16 }}>
             Back to Home
