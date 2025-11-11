@@ -50,6 +50,7 @@ export default function RegisterPage() {
       await new Promise((r) => setTimeout(r, 500));
       setSuccess("Account created. You can log in now.");
     } catch (err) {
+      console.error(err);
       setError("Something went wrong. Please try again.");
     } finally {
       setSubmitting(false);
