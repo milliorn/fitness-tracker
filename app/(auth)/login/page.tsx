@@ -1,120 +1,140 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
+import NextLink from "next/link";
+import { FormEvent, useState } from "react";
 import {
   Box,
   Button,
+  Container,
   IconButton,
-  Stack,
   TextField,
   Typography,
   Link as MUILink,
+  Alert,
 } from "@mui/material";
-import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function onSubmit(e: React.FormEvent) {
+  const validate = () => {
+    if (!email.trim()) return "Email is required";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return "Enter a valid email";
+    if (!password.trim()) return "Password is required";
+    return null;
+  };
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // TODO: call your auth endpoint
-  }
+    setError(null);
+
+    const msg = validate();
+    if (msg) {
+      setError(msg);
+      return;
+    }
+
+    try {
+      setSubmitting(true);
+      // TODO: Replace with real auth call
+      await new Promise((r) => setTimeout(r, 500));
+      // decide: redirect after real auth
+    } catch {
+      setError("Unable to log in. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
-    <Box
-      component="main"
-      sx={{
-        minHeight: "100dvh",
-        display: "grid",
-        placeItems: "center",
-        p: 2,
-      }}
-    >
-      <Stack spacing={2} sx={{ width: "100%", maxWidth: 320 }}>
-        {/* Back to Home */}
-        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-          <IconButton
-            component={Link}
-            href="/"
-            aria-label="Back to Home"
-            size="large"
-          >
-            <ArrowCircleLeftIcon fontSize="large" />
-          </IconButton>
-          <MUILink
-            component={Link}
-            href="/"
-            underline="hover"
-            sx={{ fontSize: 16 }}
-          >
-            Back to Home
-          </MUILink>
-        </Box>
-
-        {/* Form */}
-        <Box
-          component="form"
-          onSubmit={onSubmit}
-          sx={{
-            p: 3,
-            borderRadius: 3,
-            boxShadow: 8,
-            bgcolor: "background.paper",
-          }}
+    <Container component="main" maxWidth="sm" sx={{ py: 6 }}>
+      {/* Top nav row */}
+      <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+        <IconButton
+          aria-label="Back to Home"
+          component={NextLink}
+          data-cy="back-to-home-icon"
+          href="/"
         >
-          <Stack spacing={3}>
-            <Typography variant="h4" component="h1">
-              Log in
-            </Typography>
+          <ArrowBackIcon />
+        </IconButton>
 
-            {/* Shrink labels = better contrast on dark */}
-            <TextField
-              label="Email"
-              type="email"
-              autoComplete="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              fullWidth
-              required
-              slotProps={{ inputLabel: { shrink: true } }}
-            />
+        <Typography variant="h5" component="h1" sx={{ ml: 1, fontWeight: 600 }}>
+          Log in
+        </Typography>
+      </Box>
 
-            <TextField
-              label="Password"
-              type="password"
-              autoComplete="current-password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              fullWidth
-              required
-              slotProps={{ inputLabel: { shrink: true } }}
-            />
+      <Box sx={{ mb: 2 }}>
+        <MUILink component={NextLink} href="/" underline="hover">
+          Back to Home
+        </MUILink>
+      </Box>
 
-            <Button
-              type="submit"
-              variant="contained"
-              fullWidth
-              sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
-            >
-              Log in
-            </Button>
+      {error ? (
+        <Alert severity="error" sx={{ mb: 2 }}>
+          {error}
+        </Alert>
+      ) : null}
 
-            <Typography variant="body2" sx={{ textAlign: "center" }}>
-              Don’t have an account?{" "}
-              <MUILink
-                component={Link}
-                href="/register"
-                underline="hover"
-                data-cy="register-cta"
-              >
-                Register
-              </MUILink>
-            </Typography>
-          </Stack>
-        </Box>
-      </Stack>
-    </Box>
+      {/* Form */}
+      <Box
+        aria-label="Login form"
+        component="form"
+        data-cy="login-form"
+        noValidate
+        onSubmit={onSubmit}
+        sx={{ display: "grid", gap: 2 }}
+      >
+        <TextField
+          autoComplete="email"
+          fullWidth
+          label="Email"
+          name="email"
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          slotProps={{ htmlInput: { "data-cy": "input-email" } }}
+          type="email"
+          value={email}
+        />
+
+        <TextField
+          autoComplete="current-password"
+          fullWidth
+          label="Password"
+          name="password"
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          slotProps={{ htmlInput: { "data-cy": "input-password" } }}
+          type="password"
+          value={password}
+        />
+
+        <Button
+          data-cy="login-submit"
+          disabled={submitting}
+          size="large"
+          type="submit"
+          variant="contained"
+          fullWidth
+        >
+          {submitting ? "Logging in…" : "Log in"}
+        </Button>
+
+        <Typography variant="body2" sx={{ mt: 1 }}>
+          Don’t have an account?{" "}
+          <MUILink
+            component={NextLink}
+            href="/register"
+            underline="hover"
+            data-cy="register-link"
+          >
+            Create one
+          </MUILink>
+        </Typography>
+      </Box>
+    </Container>
   );
 }
