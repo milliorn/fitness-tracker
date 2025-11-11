@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/milliorn/fitness-tracker/compare/v1.3.0...v1.4.0) (2025-11-11)
+
+
+### Features
+
+* **auth:** add register page; restyle layout; align back button ([#44](https://github.com/milliorn/fitness-tracker/issues/44)) ([99aa6b4](https://github.com/milliorn/fitness-tracker/commit/99aa6b467310b7df6bfad7e9243e5f4fff6d91b4))
+
 ## [1.3.0](https://github.com/milliorn/fitness-tracker/compare/v1.2.0...v1.3.0) (2025-10-29)
 
 
