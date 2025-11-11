@@ -79,7 +79,12 @@ export default function RegisterPage() {
           >
             <ArrowCircleLeftIcon fontSize="large" />
           </IconButton>
-          <MUILink component={NextLink} href="/" underline="hover" sx={{ fontSize: 16 }}>
+          <MUILink
+            component={NextLink}
+            href="/"
+            underline="hover"
+            sx={{ fontSize: 16 }}
+          >
             Back to Home
           </MUILink>
         </Box>
@@ -112,7 +117,10 @@ export default function RegisterPage() {
               onChange={(e) => setName(e.target.value)}
               fullWidth
               required
-              slotProps={{ inputLabel: { shrink: true }, htmlInput: { "data-cy": "input-name" } }}
+              slotProps={{
+                inputLabel: { shrink: true },
+                htmlInput: { "data-cy": "input-name" },
+              }}
             />
 
             <TextField
@@ -124,7 +132,10 @@ export default function RegisterPage() {
               onChange={(e) => setEmail(e.target.value)}
               fullWidth
               required
-              slotProps={{ inputLabel: { shrink: true }, htmlInput: { "data-cy": "input-email" } }}
+              slotProps={{
+                inputLabel: { shrink: true },
+                htmlInput: { "data-cy": "input-email" },
+              }}
             />
 
             <TextField
@@ -137,7 +148,10 @@ export default function RegisterPage() {
               fullWidth
               required
               helperText="At least 8 characters"
-              slotProps={{ inputLabel: { shrink: true }, htmlInput: { "data-cy": "input-password" } }}
+              slotProps={{
+                inputLabel: { shrink: true },
+                htmlInput: { "data-cy": "input-password" },
+              }}
             />
 
             <TextField
@@ -149,15 +163,14 @@ export default function RegisterPage() {
               onChange={(e) => setConfirm(e.target.value)}
               fullWidth
               required
-              slotProps={{ inputLabel: { shrink: true }, htmlInput: { "data-cy": "input-confirm" } }}
+              slotProps={{
+                inputLabel: { shrink: true },
+                htmlInput: { "data-cy": "input-confirm" },
+              }}
             />
 
-            {error ? (
-              <Alert severity="error">{error}</Alert>
-            ) : null}
-            {success ? (
-              <Alert severity="success">{success}</Alert>
-            ) : null}
+            {error ? <Alert severity="error">{error}</Alert> : null}
+            {success ? <Alert severity="success">{success}</Alert> : null}
 
             <Button
               type="submit"
@@ -172,7 +185,12 @@ export default function RegisterPage() {
 
             <Typography variant="body2" sx={{ textAlign: "center" }}>
               Already have an account?{" "}
-              <MUILink component={NextLink} href="/login" underline="hover" data-cy="login-link">
+              <MUILink
+                component={NextLink}
+                href="/login"
+                underline="hover"
+                data-cy="login-link"
+              >
                 Log in
               </MUILink>
             </Typography>

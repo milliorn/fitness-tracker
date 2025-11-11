@@ -66,7 +66,7 @@ Cypress.Commands.add(
 
     // Return a Chainable
     return cy.wrap(subject as JQuery<HTMLImageElement>);
-  }
+  },
 );
 
 Cypress.Commands.add("openLoginFromHome", () => {
