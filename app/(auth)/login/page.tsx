@@ -1,15 +1,16 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
 import {
   Box,
   Button,
+  Link as MUILink,
   Stack,
   TextField,
   Typography,
-  Link as MUILink,
 } from "@mui/material";
+
+import Link from "next/link";
+import { useState } from "react";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -53,9 +54,9 @@ export default function LoginPage() {
 
         <Button
           fullWidth
-          sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
           type="submit"
           variant="contained"
+          sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
         >
           Log in
         </Button>

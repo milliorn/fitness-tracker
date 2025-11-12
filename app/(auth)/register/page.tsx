@@ -1,15 +1,16 @@
 "use client";
 
-import NextLink from "next/link";
 import {
+  Alert,
   Box,
   Button,
+  Link as MUILink,
   Stack,
   TextField,
   Typography,
-  Link as MUILink,
-  Alert,
 } from "@mui/material";
+
+import Link from "next/link";
 import { FormEvent, useState } from "react";
 
 export default function RegisterPage() {
@@ -35,10 +36,8 @@ export default function RegisterPage() {
     setError(null);
     setSuccess(null);
 
-    const msg = validate();
-
-    if (msg) {
-      setError(msg);
+    if (validate()) {
+      setError(validate());
       return;
     }
 
@@ -55,7 +54,9 @@ export default function RegisterPage() {
     }
   };
 
-  {/* Form */ }
+  {
+    /* Form */
+  }
   return (
     <Box
       aria-label="Register form"
@@ -145,15 +146,15 @@ export default function RegisterPage() {
         </Button>
 
         <Typography
-          variant="body2"
           sx={{ textAlign: "center", fontSize: "16px" }}
+          variant="body2"
         >
           Already have an account?{" "}
           <MUILink
-            component={NextLink}
+            component={Link}
+            data-cy="login-link"
             href="/login"
             underline="hover"
-            data-cy="login-link"
           >
             Log in
           </MUILink>
