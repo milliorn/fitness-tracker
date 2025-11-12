@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/milliorn/fitness-tracker/compare/v1.4.0...v1.5.0) (2025-11-12)
+
+
+### Features
+
+* **auth,ui:** add AuthLayout and BackToHome ([#46](https://github.com/milliorn/fitness-tracker/issues/46)) ([2ccce48](https://github.com/milliorn/fitness-tracker/commit/2ccce485a8428dfb2d6652513dadab2b59fe2ae6))
+
 ## [1.4.0](https://github.com/milliorn/fitness-tracker/compare/v1.3.0...v1.4.0) (2025-11-11)
 
 
