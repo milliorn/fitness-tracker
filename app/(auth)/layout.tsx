@@ -14,6 +14,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
       }}
     >
       <Box
+        component="main"
         sx={{
           bgcolor: "background.paper",
           borderRadius: 3,

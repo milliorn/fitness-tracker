@@ -11,7 +11,6 @@ import {
   Alert,
 } from "@mui/material";
 import { FormEvent, useState } from "react";
-import BackToHome from "../components/BacktoHome";
 
 export default function RegisterPage() {
   const [confirm, setConfirm] = useState("");
@@ -56,113 +55,109 @@ export default function RegisterPage() {
     }
   };
 
+  {/* Form */ }
   return (
-    <Box component="main">
-      <Stack>
-        {/* Form */}
-        <Box
-          aria-label="Register form"
-          component="form"
-          data-cy="register-form"
-          noValidate
-          onSubmit={onSubmit}
+    <Box
+      aria-label="Register form"
+      component="form"
+      data-cy="register-form"
+      noValidate
+      onSubmit={onSubmit}
+    >
+      <Stack spacing={3}>
+        <Typography variant="h4" component="h1">
+          Create your account
+        </Typography>
+
+        {/* Shrink labels = better contrast on dark */}
+        <TextField
+          autoComplete="name"
+          fullWidth
+          label="Display name"
+          name="name"
+          onChange={(e) => setName(e.target.value)}
+          required
+          value={name}
+          slotProps={{
+            inputLabel: { shrink: true },
+            htmlInput: { "data-cy": "input-name" },
+          }}
+        />
+
+        <TextField
+          autoComplete="email"
+          fullWidth
+          label="Email"
+          name="email"
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          type="email"
+          value={email}
+          slotProps={{
+            inputLabel: { shrink: true },
+            htmlInput: { "data-cy": "input-email" },
+          }}
+        />
+
+        <TextField
+          autoComplete="new-password"
+          fullWidth
+          helperText="At least 8 characters"
+          label="Password"
+          name="password"
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          type="password"
+          value={password}
+          slotProps={{
+            inputLabel: { shrink: true },
+            htmlInput: { "data-cy": "input-password" },
+          }}
+        />
+
+        <TextField
+          autoComplete="new-password"
+          fullWidth
+          label="Confirm password"
+          name="confirm"
+          onChange={(e) => setConfirm(e.target.value)}
+          required
+          type="password"
+          value={confirm}
+          slotProps={{
+            inputLabel: { shrink: true },
+            htmlInput: { "data-cy": "input-confirm" },
+          }}
+        />
+
+        {error ? <Alert severity="error">{error}</Alert> : null}
+        {success ? <Alert severity="success">{success}</Alert> : null}
+
+        <Button
+          data-cy="register-cta"
+          disabled={submitting}
+          fullWidth
+          type="submit"
+          variant="contained"
+          sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
         >
-          <Stack spacing={3}>
-            <Typography variant="h4" component="h1">
-              Create your account
-            </Typography>
+          {submitting ? "Creating account…" : "Create account"}
+        </Button>
 
-            {/* Shrink labels = better contrast on dark */}
-            <TextField
-              autoComplete="name"
-              fullWidth
-              label="Display name"
-              name="name"
-              onChange={(e) => setName(e.target.value)}
-              required
-              value={name}
-              slotProps={{
-                inputLabel: { shrink: true },
-                htmlInput: { "data-cy": "input-name" },
-              }}
-            />
-
-            <TextField
-              autoComplete="email"
-              fullWidth
-              label="Email"
-              name="email"
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              type="email"
-              value={email}
-              slotProps={{
-                inputLabel: { shrink: true },
-                htmlInput: { "data-cy": "input-email" },
-              }}
-            />
-
-            <TextField
-              autoComplete="new-password"
-              fullWidth
-              helperText="At least 8 characters"
-              label="Password"
-              name="password"
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              type="password"
-              value={password}
-              slotProps={{
-                inputLabel: { shrink: true },
-                htmlInput: { "data-cy": "input-password" },
-              }}
-            />
-
-            <TextField
-              autoComplete="new-password"
-              fullWidth
-              label="Confirm password"
-              name="confirm"
-              onChange={(e) => setConfirm(e.target.value)}
-              required
-              type="password"
-              value={confirm}
-              slotProps={{
-                inputLabel: { shrink: true },
-                htmlInput: { "data-cy": "input-confirm" },
-              }}
-            />
-
-            {error ? <Alert severity="error">{error}</Alert> : null}
-            {success ? <Alert severity="success">{success}</Alert> : null}
-
-            <Button
-              data-cy="register-cta"
-              disabled={submitting}
-              fullWidth
-              type="submit"
-              variant="contained"
-              sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
-            >
-              {submitting ? "Creating account…" : "Create account"}
-            </Button>
-
-            <Typography
-              variant="body2"
-              sx={{ textAlign: "center", fontSize: "16px" }}
-            >
-              Already have an account?{" "}
-              <MUILink
-                component={NextLink}
-                href="/login"
-                underline="hover"
-                data-cy="login-link"
-              >
-                Log in
-              </MUILink>
-            </Typography>
-          </Stack>
-        </Box>
+        <Typography
+          variant="body2"
+          sx={{ textAlign: "center", fontSize: "16px" }}
+        >
+          Already have an account?{" "}
+          <MUILink
+            component={NextLink}
+            href="/login"
+            underline="hover"
+            data-cy="login-link"
+          >
+            Log in
+          </MUILink>
+        </Typography>
       </Stack>
     </Box>
   );

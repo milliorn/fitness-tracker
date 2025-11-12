@@ -10,7 +10,6 @@ import {
   Typography,
   Link as MUILink,
 } from "@mui/material";
-import BackToHome from "../components/BacktoHome";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -21,64 +20,60 @@ export default function LoginPage() {
     // TODO: call your auth endpoint
   }
 
+  /* Form */
   return (
-    <Box component="main">
-      <Stack>
-        {/* Form */}
-        <Box component="form" onSubmit={onSubmit}>
-          <Stack spacing={3}>
-            <Typography variant="h4" component="h1">
-              Log in
-            </Typography>
+    <Box component="form" onSubmit={onSubmit}>
+      <Stack spacing={3}>
+        <Typography variant="h4" component="h1">
+          Log in
+        </Typography>
 
-            {/* Shrink labels = better contrast on dark */}
-            <TextField
-              autoComplete="email"
-              fullWidth
-              label="Email"
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              slotProps={{ inputLabel: { shrink: true } }}
-              type="email"
-              value={email}
-            />
+        {/* Shrink labels = better contrast on dark */}
+        <TextField
+          autoComplete="email"
+          fullWidth
+          label="Email"
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          slotProps={{ inputLabel: { shrink: true } }}
+          type="email"
+          value={email}
+        />
 
-            <TextField
-              autoComplete="current-password"
-              fullWidth
-              label="Password"
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              slotProps={{ inputLabel: { shrink: true } }}
-              type="password"
-              value={password}
-            />
+        <TextField
+          autoComplete="current-password"
+          fullWidth
+          label="Password"
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          slotProps={{ inputLabel: { shrink: true } }}
+          type="password"
+          value={password}
+        />
 
-            <Button
-              fullWidth
-              sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
-              type="submit"
-              variant="contained"
-            >
-              Log in
-            </Button>
+        <Button
+          fullWidth
+          sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
+          type="submit"
+          variant="contained"
+        >
+          Log in
+        </Button>
 
-            <Typography
-              sx={{ textAlign: "center", fontSize: "16px" }}
-              variant="body2"
-            >
-              Don’t have an account?{" "}
-              <MUILink
-                component={Link}
-                data-cy="register-cta"
-                href="/register"
-                underline="hover"
-              >
-                Register
-              </MUILink>
-            </Typography>
-          </Stack>
-        </Box>
+        <Typography
+          sx={{ textAlign: "center", fontSize: "16px" }}
+          variant="body2"
+        >
+          Don’t have an account?{" "}
+          <MUILink
+            component={Link}
+            data-cy="register-cta"
+            href="/register"
+            underline="hover"
+          >
+            Register
+          </MUILink>
+        </Typography>
       </Stack>
     </Box>
   );
