@@ -162,7 +162,7 @@ export default function RegisterPage() {
             {submitting ? "Creating account…" : "Create account"}
           </Button>
 
-          <Typography variant="body2" sx={{ textAlign: "center" }}>
+          <Typography variant="body2" sx={{ textAlign: "center", fontSize: "16px" }}>
             Already have an account?{" "}
             <MUILink
               component={NextLink}
