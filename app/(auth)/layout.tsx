@@ -1,5 +1,6 @@
+import { Box, Container, Stack } from "@mui/material";
 import { ReactNode } from "react";
-import { Container, Box } from "@mui/material";
+import BackToHome from "./components/BacktoHome";
 
 export default function AuthLayout({ children }: { children: ReactNode }) {
   return (
@@ -12,7 +13,22 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
         placeItems: "center",
       }}
     >
-      <Box sx={{ width: "100%", maxWidth: 320 }}>{children}</Box>
+      <Box
+        component="main"
+        sx={{
+          bgcolor: "background.paper",
+          borderRadius: 3,
+          boxShadow: 8,
+          maxWidth: 320,
+          p: 3,
+          width: "100%",
+        }}
+      >
+        <Stack spacing={2} sx={{ width: "100%", maxWidth: 320 }}>
+          <BackToHome />
+          {children}
+        </Stack>
+      </Box>
     </Container>
   );
 }
