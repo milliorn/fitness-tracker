@@ -57,11 +57,8 @@ export default function RegisterPage() {
   };
 
   return (
-    <Box
-      component="main"
-    >
-      <Stack spacing={2} sx={{ width: "100%", maxWidth: 320 }}>
-        <BackToHome />
+    <Box component="main">
+      <Stack>
         {/* Form */}
         <Box
           aria-label="Register form"

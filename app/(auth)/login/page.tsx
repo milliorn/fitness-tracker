@@ -22,16 +22,10 @@ export default function LoginPage() {
   }
 
   return (
-    <Box
-      component="main"
-    >
-      <Stack spacing={2} sx={{ width: "100%", maxWidth: 320 }}>
-        <BackToHome />
+    <Box component="main">
+      <Stack>
         {/* Form */}
-        <Box
-          component="form"
-          onSubmit={onSubmit}
-        >
+        <Box component="form" onSubmit={onSubmit}>
           <Stack spacing={3}>
             <Typography variant="h4" component="h1">
               Log in
