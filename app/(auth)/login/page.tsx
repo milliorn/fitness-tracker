@@ -81,7 +81,10 @@ export default function LoginPage() {
               Log in
             </Button>
 
-          <Typography variant="body2" sx={{ textAlign: "center", fontSize: "16px" }}>
+            <Typography
+              variant="body2"
+              sx={{ textAlign: "center", fontSize: "16px" }}
+            >
               Don’t have an account?{" "}
               <MUILink
                 component={Link}
