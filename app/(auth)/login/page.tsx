@@ -5,13 +5,12 @@ import Link from "next/link";
 import {
   Box,
   Button,
-  IconButton,
   Stack,
   TextField,
   Typography,
   Link as MUILink,
 } from "@mui/material";
-import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
+import BackToHome from "../components/BacktoHome";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -33,26 +32,7 @@ export default function LoginPage() {
       }}
     >
       <Stack spacing={2} sx={{ width: "100%", maxWidth: 320 }}>
-        {/* Back to Home */}
-        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-          <IconButton
-            component={Link}
-            href="/"
-            aria-label="Back to Home"
-            size="large"
-          >
-            <ArrowCircleLeftIcon fontSize="large" />
-          </IconButton>
-          <MUILink
-            component={Link}
-            href="/"
-            underline="hover"
-            sx={{ fontSize: 16 }}
-          >
-            Back to Home
-          </MUILink>
-        </Box>
-
+        <BackToHome />
         {/* Form */}
         <Box
           component="form"
@@ -101,7 +81,7 @@ export default function LoginPage() {
               Log in
             </Button>
 
-            <Typography variant="body2" sx={{ textAlign: "center" }}>
+          <Typography variant="body2" sx={{ textAlign: "center", fontSize: "16px" }}>
               Don’t have an account?{" "}
               <MUILink
                 component={Link}
