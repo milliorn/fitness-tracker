@@ -1,16 +1,18 @@
 import { ReactNode } from "react";
+import { Container, Box } from "@mui/material";
 
 export default function AuthLayout({ children }: { children: ReactNode }) {
   return (
-    <div
-      style={{
+    <Container
+      maxWidth={false}
+      sx={{
         display: "grid",
         minHeight: "100dvh",
-        padding: "16px",
+        p: 2,
         placeItems: "center",
       }}
     >
-      <div style={{ width: "100%", maxWidth: 320 }}>{children}</div>
-    </div>
+      <Box sx={{ width: "100%", maxWidth: 320 }}>{children}</Box>
+    </Container>
   );
 }
