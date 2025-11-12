@@ -24,12 +24,6 @@ export default function LoginPage() {
   return (
     <Box
       component="main"
-      sx={{
-        minHeight: "100dvh",
-        display: "grid",
-        placeItems: "center",
-        p: 2,
-      }}
     >
       <Stack spacing={2} sx={{ width: "100%", maxWidth: 320 }}>
         <BackToHome />
@@ -37,12 +31,6 @@ export default function LoginPage() {
         <Box
           component="form"
           onSubmit={onSubmit}
-          sx={{
-            p: 3,
-            borderRadius: 3,
-            boxShadow: 8,
-            bgcolor: "background.paper",
-          }}
         >
           <Stack spacing={3}>
             <Typography variant="h4" component="h1">

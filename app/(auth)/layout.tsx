@@ -12,7 +12,14 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
         placeItems: "center",
       }}
     >
-      <Box sx={{ width: "100%", maxWidth: 320 }}>{children}</Box>
+      <Box sx={{
+        width: "100%",
+        maxWidth: 320,             
+        p: 3,
+        borderRadius: 3,
+        boxShadow: 8,
+        bgcolor: "background.paper",
+      }}>{children}</Box>
     </Container>
   );
 }
