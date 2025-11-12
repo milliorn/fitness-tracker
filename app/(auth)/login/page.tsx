@@ -39,46 +39,46 @@ export default function LoginPage() {
 
             {/* Shrink labels = better contrast on dark */}
             <TextField
-              label="Email"
-              type="email"
               autoComplete="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
               fullWidth
+              label="Email"
+              onChange={(e) => setEmail(e.target.value)}
               required
               slotProps={{ inputLabel: { shrink: true } }}
+              type="email"
+              value={email}
             />
 
             <TextField
-              label="Password"
-              type="password"
               autoComplete="current-password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
               fullWidth
+              label="Password"
+              onChange={(e) => setPassword(e.target.value)}
               required
               slotProps={{ inputLabel: { shrink: true } }}
+              type="password"
+              value={password}
             />
 
             <Button
-              type="submit"
-              variant="contained"
               fullWidth
               sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
+              type="submit"
+              variant="contained"
             >
               Log in
             </Button>
 
             <Typography
-              variant="body2"
               sx={{ textAlign: "center", fontSize: "16px" }}
+              variant="body2"
             >
               Don’t have an account?{" "}
               <MUILink
                 component={Link}
+                data-cy="register-cta"
                 href="/register"
                 underline="hover"
-                data-cy="register-cta"
               >
                 Register
               </MUILink>

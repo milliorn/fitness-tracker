@@ -64,11 +64,11 @@ export default function RegisterPage() {
         <BackToHome />
         {/* Form */}
         <Box
-          component="form"
-          onSubmit={onSubmit}
           aria-label="Register form"
+          component="form"
           data-cy="register-form"
           noValidate
+          onSubmit={onSubmit}
         >
           <Stack spacing={3}>
             <Typography variant="h4" component="h1">
@@ -77,13 +77,13 @@ export default function RegisterPage() {
 
             {/* Shrink labels = better contrast on dark */}
             <TextField
+              autoComplete="name"
+              fullWidth
               label="Display name"
               name="name"
-              autoComplete="name"
-              value={name}
               onChange={(e) => setName(e.target.value)}
-              fullWidth
               required
+              value={name}
               slotProps={{
                 inputLabel: { shrink: true },
                 htmlInput: { "data-cy": "input-name" },
@@ -91,14 +91,14 @@ export default function RegisterPage() {
             />
 
             <TextField
-              label="Email"
-              type="email"
-              name="email"
               autoComplete="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
               fullWidth
+              label="Email"
+              name="email"
+              onChange={(e) => setEmail(e.target.value)}
               required
+              type="email"
+              value={email}
               slotProps={{
                 inputLabel: { shrink: true },
                 htmlInput: { "data-cy": "input-email" },
@@ -106,15 +106,15 @@ export default function RegisterPage() {
             />
 
             <TextField
-              label="Password"
-              type="password"
-              name="password"
               autoComplete="new-password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
               fullWidth
-              required
               helperText="At least 8 characters"
+              label="Password"
+              name="password"
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              type="password"
+              value={password}
               slotProps={{
                 inputLabel: { shrink: true },
                 htmlInput: { "data-cy": "input-password" },
@@ -122,14 +122,14 @@ export default function RegisterPage() {
             />
 
             <TextField
-              label="Confirm password"
-              type="password"
-              name="confirm"
               autoComplete="new-password"
-              value={confirm}
-              onChange={(e) => setConfirm(e.target.value)}
               fullWidth
+              label="Confirm password"
+              name="confirm"
+              onChange={(e) => setConfirm(e.target.value)}
               required
+              type="password"
+              value={confirm}
               slotProps={{
                 inputLabel: { shrink: true },
                 htmlInput: { "data-cy": "input-confirm" },
@@ -140,11 +140,11 @@ export default function RegisterPage() {
             {success ? <Alert severity="success">{success}</Alert> : null}
 
             <Button
+              data-cy="register-cta"
+              disabled={submitting}
+              fullWidth
               type="submit"
               variant="contained"
-              fullWidth
-              disabled={submitting}
-              data-cy="register-cta"
               sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
             >
               {submitting ? "Creating account…" : "Create account"}
