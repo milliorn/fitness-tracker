@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/milliorn/fitness-tracker/compare/v1.5.0...v2.0.0) (2025-11-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ui,auth:** register page CTA selector changed to `data-cy="login-cta"` (was `login-link`)
+
+### Code Refactoring
+
+* **ui,auth:** add AuthCta, simplify BackToHome, style Home card ([#49](https://github.com/milliorn/fitness-tracker/issues/49)) ([f25edaa](https://github.com/milliorn/fitness-tracker/commit/f25edaa2f4f7271d622f7b39faf6d5e25072e99f))
+
 ## [1.5.0](https://github.com/milliorn/fitness-tracker/compare/v1.4.0...v1.5.0) (2025-11-12)
 
 
