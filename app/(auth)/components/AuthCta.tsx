@@ -16,17 +16,9 @@ export function AuthCta({
   "data-cy": dataCy,
 }: AuthCtaProps) {
   return (
-    <Typography
-      sx={{ textAlign: "center", fontSize: "16px" }}
-      variant="body2"
-    >
+    <Typography sx={{ textAlign: "center", fontSize: "16px" }} variant="body2">
       {question}{" "}
-      <Link
-        component={NextLink}
-        data-cy={dataCy}
-        href={href}
-        underline="hover"
-      >
+      <Link component={NextLink} data-cy={dataCy} href={href} underline="hover">
         {label}
       </Link>
     </Typography>

@@ -1,5 +1,5 @@
 import NextLink from "next/link";
-import { Box, IconButton, Link,  } from "@mui/material";
+import { Box, IconButton, Link } from "@mui/material";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 
 export default function BackToHome() {

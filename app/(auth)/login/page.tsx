@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  Box,
-  Button,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Stack, TextField, Typography } from "@mui/material";
 
 import { useState } from "react";
 import { AuthCta } from "../components/AuthCta";
