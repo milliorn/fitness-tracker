@@ -19,10 +19,14 @@ export default function Home() {
       <Box
         sx={{
           alignItems: "center",
+          bgcolor: "background.paper",
+          borderRadius: 3,
+          boxShadow: 8,
           display: "flex",
           flexDirection: "column",
           gap: 4,
           maxWidth: 480,
+          p: 3,
           width: "100%",
         }}
       >
