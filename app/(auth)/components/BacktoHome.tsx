@@ -1,30 +1,27 @@
-"use client";
-
 import NextLink from "next/link";
-import { Box, IconButton, Link as MUILink } from "@mui/material";
+import { Box, IconButton, Link,  } from "@mui/material";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 
-// Minimal, uniform BackToHome used across auth pages
-export default function BackToHome({ href = "/" }) {
+export default function BackToHome() {
   return (
     <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
       <IconButton
         component={NextLink}
-        href={href}
+        href="/"
         aria-label="Back to Home"
         size="large"
         data-cy="back-to-home"
       >
         <ArrowCircleLeftIcon fontSize="large" />
       </IconButton>
-      <MUILink
+      <Link
         component={NextLink}
-        href={href}
+        href="/"
         underline="hover"
         sx={{ fontSize: 16 }}
       >
         Back to Home
-      </MUILink>
+      </Link>
     </Box>
   );
 }
