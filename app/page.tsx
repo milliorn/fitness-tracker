@@ -25,7 +25,6 @@ export default function Home() {
           display: "flex",
           flexDirection: "column",
           gap: 4,
-          maxWidth: 480,
           p: 3,
           width: "100%",
         }}
