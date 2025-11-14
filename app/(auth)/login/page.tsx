@@ -3,14 +3,13 @@
 import {
   Box,
   Button,
-  Link as MUILink,
   Stack,
   TextField,
   Typography,
 } from "@mui/material";
 
-import Link from "next/link";
 import { useState } from "react";
+import { AuthCta } from "../components/AuthCta";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -61,20 +60,12 @@ export default function LoginPage() {
           Log in
         </Button>
 
-        <Typography
-          sx={{ textAlign: "center", fontSize: "16px" }}
-          variant="body2"
-        >
-          Don’t have an account?{" "}
-          <MUILink
-            component={Link}
-            data-cy="register-cta"
-            href="/register"
-            underline="hover"
-          >
-            Register
-          </MUILink>
-        </Typography>
+        <AuthCta
+          data-cy="register-cta"
+          href="/register"
+          label="Register"
+          question="Don’t have an account?"
+        />
       </Stack>
     </Box>
   );

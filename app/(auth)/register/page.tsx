@@ -4,14 +4,13 @@ import {
   Alert,
   Box,
   Button,
-  Link as MUILink,
   Stack,
   TextField,
   Typography,
 } from "@mui/material";
 
-import Link from "next/link";
 import { FormEvent, useState } from "react";
+import { AuthCta } from "../components/AuthCta";
 
 export default function RegisterPage() {
   const [confirm, setConfirm] = useState("");
@@ -145,20 +144,12 @@ export default function RegisterPage() {
           {submitting ? "Creating account…" : "Create account"}
         </Button>
 
-        <Typography
-          sx={{ textAlign: "center", fontSize: "16px" }}
-          variant="body2"
-        >
-          Already have an account?{" "}
-          <MUILink
-            component={Link}
-            data-cy="login-link"
-            href="/login"
-            underline="hover"
-          >
-            Log in
-          </MUILink>
-        </Typography>
+        <AuthCta
+          question="Already have an account?"
+          href="/login"
+          label="Log in"
+          data-cy="login-cta"
+        />
       </Stack>
     </Box>
   );
