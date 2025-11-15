@@ -25,7 +25,7 @@ describe("Home avatar", () => {
   });
 
   it("has the login/register buttons next to the avatar", () => {
-    cy.visit("/");
+    cy.visitHome();
     cy.get("#home-login-register-buttons").within(() => {
       cy.get('[data-cy="login-cta"]')
         .should("be.visible")
