@@ -5,7 +5,7 @@
 
 describe("Home avatar", () => {
   it("shows and loads the monolith image", () => {
-    cy.visit("/");
+    cy.visitHome();
 
     // Single retryable assertion: Cypress keeps retrying until ALL pass.
     cy.get('img[alt="Homepage Logo"]', { timeout: 10000 }).should(($img) => {
@@ -19,7 +19,7 @@ describe("Home avatar", () => {
       const chosen = el.currentSrc || el.src || "";
       expect(
         chosen,
-        `chosen src (${chosen}) should be a monolith webp`,
+        `chosen src (${chosen}) should be a monolith webp`
       ).to.match(/\/monolith.*\.webp(?:\?.*)?$/);
     });
   });
@@ -27,8 +27,6 @@ describe("Home avatar", () => {
   it("has the login/register buttons next to the avatar", () => {
     cy.visit("/");
     cy.get("#home-login-register-buttons").within(() => {
-      //   cy.contains("button", /login/i).should("be.visible").and("have.attr", "href", "/login");
-      //   cy.contains("button", /register/i).should("be.visible").and("have.attr", "href", "/register");
       cy.get('[data-cy="login-cta"]')
         .should("be.visible")
         .and("have.attr", "href", "/login");
