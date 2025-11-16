@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -29,6 +30,13 @@ export default function Home() {
           width: "100%",
         }}
       >
+        <Typography
+          component="h1"
+          variant="h4"
+          sx={{ textAlign: "center" }}
+        >
+          Fitness Tracker
+        </Typography>
         <Avatar
           alt="Homepage Logo"
           // Keep the fallback modest to avoid oversized speculative fetches
