@@ -38,34 +38,37 @@ describe("Home CTA accessibility", () => {
     });
   });
 
-it("Home passes WCAG A/AA audit", () => {
-  cy.visitHome();
-  cy.injectAxe();
+  it("Home passes WCAG A/AA audit", () => {
+    cy.visitHome();
+    cy.injectAxe();
 
-  cy.checkA11y(
-    undefined,
-    {
-      // keep this commented/uncommented as you like
-      // runOnly: {
-      //   type: "tag",
-      //   values: ["wcag2a", "wcag2aa"],
-      // },
-    },
-    (violations) => {
-      const summary = violations.map((v) => ({
-        id: v.id,
-        impact: v.impact,
-        description: v.description,
-        help: v.help,
-        helpUrl: v.helpUrl,
-      }));
+    cy.checkA11y(
+      undefined,
+      {
+        // runOnly: {
+        //   type: "tag",
+        //   values: ["wcag2a", "wcag2aa"],
+        // },
+      },
+      (violations) => {
+        const summary = violations.map((v) => ({
+          id: v.id,
+          impact: v.impact,
+          description: v.description,
+          help: v.help,
+          helpUrl: v.helpUrl,
+        }));
 
-      expect(
-        violations.length,
-        `A11Y violations:\n${JSON.stringify(summary, null, 2)}`
-      ).to.equal(0);
-    }
-  );
-});
+        expect(
+          violations.length,
+          `A11Y violations:\n${JSON.stringify(summary, null, 2)}`
+        ).to.equal(0);
+      }
+    );
+  });
 
+  it("Home has a h1 element", () => {
+    cy.visitHome();
+    cy.get("h1").should("contain.text", "Fitness Tracker");
+  });
 });
