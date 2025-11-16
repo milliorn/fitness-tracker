@@ -61,9 +61,9 @@ describe("Home CTA accessibility", () => {
 
         expect(
           violations.length,
-          `A11Y violations:\n${JSON.stringify(summary, null, 2)}`
+          `A11Y violations:\n${JSON.stringify(summary, null, 2)}`,
         ).to.equal(0);
-      }
+      },
     );
   });
 

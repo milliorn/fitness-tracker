@@ -30,11 +30,7 @@ export default function Home() {
           width: "100%",
         }}
       >
-        <Typography
-          component="h1"
-          variant="h4"
-          sx={{ textAlign: "center" }}
-        >
+        <Typography component="h1" variant="h4" sx={{ textAlign: "center" }}>
           Fitness Tracker
         </Typography>
         <Avatar
