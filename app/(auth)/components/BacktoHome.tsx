@@ -6,11 +6,11 @@ export default function BackToHome() {
   return (
     <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
       <IconButton
-        component={NextLink}
-        href="/"
         aria-label="Back to Home"
-        size="large"
+        component={NextLink}
         data-cy="back-to-home"
+        href="/"
+        size="large"
       >
         <ArrowCircleLeftIcon fontSize="large" />
       </IconButton>

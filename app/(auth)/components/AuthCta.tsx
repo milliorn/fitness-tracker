@@ -5,7 +5,7 @@ type AuthCtaProps = {
   question: string;
   href: string;
   label: string;
-  "data-cy"?: string;
+  "data-cy": string;
 };
 
 // Call to Action

@@ -145,10 +145,10 @@ export default function RegisterPage() {
         </Button>
 
         <AuthCta
-          question="Already have an account?"
+          data-cy="login-cta"
           href="/login"
           label="Log in"
-          data-cy="login-cta"
+          question="Already have an account?"
         />
       </Stack>
     </Box>

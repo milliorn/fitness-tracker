@@ -4,28 +4,15 @@ describe("Home CTA accessibility", () => {
 
     // Make sure the window & document have focus before tabbing
     cy.window().then((w) => w.focus());
-
-    cy.get("body").click(0, 0); // prime focus in headless runs
-
+    // prime focus in headless runs
+    cy.get("body").click(0, 0);
     // Use real keyboard events if available
     cy.realPress("Tab");
-
-    // cy.focused()
-    //   .should(($el) => {
-    //     // It's a real <button>
-    //     expect($el.prop("tagName")).to.eq("BUTTON");
-    //   })
-    //   .should("contain.text", "Login");
 
     cy.get('[data-cy="login-cta"]').should("have.focus");
 
     cy.realPress("Tab");
 
-    // cy.focused()
-    //   .should(($el) => {
-    //     expect($el.prop("tagName")).to.eq("BUTTON");
-    //   })
-    //   .should("contain.text", "Register");
     cy.get('[data-cy="register-cta"]').should("have.focus");
   });
 
@@ -42,7 +29,7 @@ describe("Home CTA accessibility", () => {
         .should("have.attr", "alt")
         .and("match", /\S/);
 
-      // Optional: verify the chosen candidate, not a specific filename
+      // Verify the chosen candidate, not a specific filename
       cy.get('img[alt="Homepage Logo"]').then(($img) => {
         const el = $img[0] as HTMLImageElement;
         const chosen = el.currentSrc || el.src || "";
@@ -54,6 +41,34 @@ describe("Home CTA accessibility", () => {
   it("Home passes WCAG A/AA audit", () => {
     cy.visitHome();
     cy.injectAxe();
-    cy.checkA11y(undefined, { runOnly: ["wcag2a", "wcag2aa"] });
+
+    cy.checkA11y(
+      undefined,
+      {
+        // runOnly: {
+        //   type: "tag",
+        //   values: ["wcag2a", "wcag2aa"],
+        // },
+      },
+      (violations) => {
+        const summary = violations.map((v) => ({
+          id: v.id,
+          impact: v.impact,
+          description: v.description,
+          help: v.help,
+          helpUrl: v.helpUrl,
+        }));
+
+        expect(
+          violations.length,
+          `A11Y violations:\n${JSON.stringify(summary, null, 2)}`,
+        ).to.equal(0);
+      },
+    );
+  });
+
+  it("Home has a h1 element", () => {
+    cy.visitHome();
+    cy.get("h1").should("contain.text", "Fitness Tracker");
   });
 });
