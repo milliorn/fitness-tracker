@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/milliorn/fitness-tracker/compare/v2.0.0...v2.1.0) (2025-11-16)
+
+
+### Features
+
+* **ui:** add Home h1; tighten a11y checks in Cypress ([#51](https://github.com/milliorn/fitness-tracker/issues/51)) ([7365a58](https://github.com/milliorn/fitness-tracker/commit/7365a589b4afd6283f8191631b94cfcaf2157da1))
+
 ## [2.0.0](https://github.com/milliorn/fitness-tracker/compare/v1.5.0...v2.0.0) (2025-11-14)
 
 
