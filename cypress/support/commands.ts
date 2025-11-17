@@ -39,7 +39,7 @@ Cypress.Commands.add(
 
     // Return a Chainable
     return cy.wrap(subject as JQuery<HTMLImageElement>);
-  },
+  }
 );
 
 Cypress.Commands.add("openLoginFromHome", () => {
@@ -51,6 +51,11 @@ Cypress.Commands.add("openLoginFromHome", () => {
 Cypress.Commands.add("visitLogin", () => {
   cy.visit("/login");
   cy.location("pathname").should("eq", "/login");
+});
+
+Cypress.Commands.add("visitRegister", () => {
+  cy.visit("/register");
+  cy.location("pathname").should("eq", "/register");
 });
 
 // ---- Utilities for focus-driven tests ----
@@ -84,6 +89,9 @@ declare global {
 
       /** Directly visit /login and assert */
       visitLogin(): Chainable<Element>;
+
+      /** Directly visit /register and assert */
+      visitRegister(): Chainable<Element>;
     }
   }
 }
