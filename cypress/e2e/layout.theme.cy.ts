@@ -5,12 +5,17 @@ describe("Root layout", () => {
   });
 
   it("uses the app metadata for title and description", () => {
-    cy.visitHome();
-    cy.title().should("eq", "GymScry App");
-    cy.get('head meta[name="description"]').should(
-      "have.attr",
-      "content",
-      "Future Fitness App"
-    );
+    cy.request("/").then((resp) => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(resp.body, "text/html");
+
+      const title = doc.querySelector("title")?.textContent;
+      const desc = doc
+        .querySelector('meta[name="description"]')
+        ?.getAttribute("content");
+
+      expect(title).to.equal("GymScry App");
+      expect(desc).to.equal("Future Fitness App");
+    });
   });
 });
