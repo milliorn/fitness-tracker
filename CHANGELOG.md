@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://github.com/milliorn/fitness-tracker/compare/v2.1.0...v2.2.0) (2025-11-21)
+
+
+### Features
+
+* **app:** add PWA manifest and dynamic metadata ([#55](https://github.com/milliorn/fitness-tracker/issues/55)) ([969108a](https://github.com/milliorn/fitness-tracker/commit/969108af77820537e8959f8e6c2af6bfb159811f))
+
 ## [2.1.0](https://github.com/milliorn/fitness-tracker/compare/v2.0.0...v2.1.0) (2025-11-16)
 
 
