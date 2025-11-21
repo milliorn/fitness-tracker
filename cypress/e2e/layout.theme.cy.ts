@@ -18,4 +18,21 @@ describe("Root layout", () => {
       expect(desc).to.equal("Future Fitness App");
     });
   });
+
+  it("includes favicon and viewport meta", () => {
+    cy.request("/").then((resp) => {
+      const doc = new DOMParser().parseFromString(resp.body, "text/html");
+
+      const favicon = doc.querySelector('link[rel="icon"]');
+      const viewport = doc.querySelector('meta[name="viewport"]');
+
+      expect(favicon, "favicon link tag").to.not.equal(null);
+      expect(viewport, "viewport meta tag").to.not.equal(null);
+    });
+  });
+
+  it("renders the root <main> wrapper correctly", () => {
+    cy.visitHome();
+    cy.get("main").should("exist");
+  });
 });
