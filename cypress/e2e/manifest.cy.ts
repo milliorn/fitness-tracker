@@ -1,6 +1,8 @@
 describe("PWA manifest", () => {
   it("is served and has the expected shape", () => {
-    cy.request("/manifest.webmanifest").then((resp) => {
+    const webmanifest = "/manifest.webmanifest";
+
+    cy.request(webmanifest).then((resp) => {
       expect(resp.status).to.eq(200);
 
       expect(resp.headers["content-type"]).to.include("json");
@@ -34,15 +36,15 @@ describe("PWA manifest", () => {
       expect(firstIcon.src).to.eq("/favicon.ico");
       expect(firstIcon.type).to.eq("image/x-icon");
     });
-  });
 
-  it("serves actual icon files from the manifest", () => {
-    cy.request("/manifest.webmanifest").then((resp) => {
-      const manifest = resp.body as { icons?: { src: string }[] };
-      const icons = manifest.icons ?? [];
+    it("serves actual icon files from the manifest", () => {
+      cy.request(webmanifest).then((resp) => {
+        const manifest = resp.body as { icons?: { src: string }[] };
+        const icons = manifest.icons ?? [];
 
-      icons.slice(0, 2).forEach((icon) => {
-        cy.request(icon.src).its("status").should("eq", 200);
+        icons.slice(0, 2).forEach((icon) => {
+          cy.request(icon.src).its("status").should("eq", 200);
+        });
       });
     });
   });
