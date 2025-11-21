@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   category: "Fitness and Health",
   creator: "Scott Milliorn",
   description: "Future Fitness App",
-  icons: "",  
+  icons: "",
   keywords: [
     "GymScry",
     "fitness tracker",
@@ -31,7 +31,6 @@ export const metadata: Metadata = {
     default: "GymScry App",
   },
 };
-
 
 export default function RootLayout({
   children,

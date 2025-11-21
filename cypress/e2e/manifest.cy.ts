@@ -29,7 +29,7 @@ describe("PWA manifest", () => {
       expect(manifest.icons, "icons array").to.be.an("array");
 
       expect(manifest.icons!.length, "has at least one icon").to.be.greaterThan(
-        0
+        0,
       );
 
       const firstIcon = manifest.icons![0];

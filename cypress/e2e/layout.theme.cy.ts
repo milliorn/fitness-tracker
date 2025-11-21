@@ -9,11 +9,11 @@ describe("Root layout", () => {
   it("uses the app metadata for title and description", () => {
     cy.request(homepage).then((resp) => {
       const doc = new DOMParser().parseFromString(resp.body, "text/html");
-      
+
       expect(doc.querySelector("title")?.textContent).to.equal("GymScry App");
-      expect(doc
-          .querySelector('meta[name="description"]')
-          ?.getAttribute("content")).to.equal("Future Fitness App");
+      expect(
+        doc.querySelector('meta[name="description"]')?.getAttribute("content"),
+      ).to.equal("Future Fitness App");
     });
   });
 
