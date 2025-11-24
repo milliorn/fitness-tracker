@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.0](https://github.com/milliorn/fitness-tracker/compare/v2.2.0...v2.3.0) (2025-11-24)
+
+
+### Features
+
+* **auth:** scaffold Better Auth and minimal auth instance ([#58](https://github.com/milliorn/fitness-tracker/issues/58)) ([d1838a0](https://github.com/milliorn/fitness-tracker/commit/d1838a09941cbace48a5ae6b44a86baea944b720))
+
 ## [2.2.0](https://github.com/milliorn/fitness-tracker/compare/v2.1.0...v2.2.0) (2025-11-21)
 
 
