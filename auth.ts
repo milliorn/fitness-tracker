@@ -1,5 +1,7 @@
 import { betterAuth } from "better-auth";
+import { db } from "./db";
+
 
 export const auth = betterAuth({
-  // https://www.better-auth.com/docs/installation#create-a-better-auth-instance
+  database: db,
 });
