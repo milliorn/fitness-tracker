@@ -89,4 +89,9 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 <https://nextjs.org/docs/app/api-reference/components/link>
 
-## Material-UI API TextField
+## Better-Auth
+
+<https://www.better-auth.com/>
+<https://www.better-auth.com/docs/installation>
+
+## better-sqlite3
