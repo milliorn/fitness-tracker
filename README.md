@@ -95,3 +95,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 <https://www.better-auth.com/docs/installation>
 
 ## better-sqlite3
+
+<https://github.com/WiseLibs/better-sqlite3>
+<https://github.com/WiseLibs/better-sqlite3/blob/master/docs/performance.md>
