@@ -93,6 +93,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 <https://www.better-auth.com/>
 <https://www.better-auth.com/docs/installation>
+<https://www.better-auth.com/docs/installation#create-database-tables>
 
 ## better-sqlite3
 
