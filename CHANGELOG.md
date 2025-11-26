@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.0](https://github.com/milliorn/fitness-tracker/compare/v2.3.0...v2.4.0) (2025-11-26)
+
+
+### Features
+
+* **auth:** integrate Better Auth with better-sqlite3 via shared db module ([#60](https://github.com/milliorn/fitness-tracker/issues/60)) ([d5e0a18](https://github.com/milliorn/fitness-tracker/commit/d5e0a18b1e618b24bfff69dda6b93d63090f6bf5))
+
 ## [2.3.0](https://github.com/milliorn/fitness-tracker/compare/v2.2.0...v2.3.0) (2025-11-24)
 
 
