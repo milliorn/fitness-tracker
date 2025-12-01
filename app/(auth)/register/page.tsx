@@ -11,6 +11,9 @@ import {
 
 import { FormEvent, useState } from "react";
 import { AuthCta } from "../components/AuthCta";
+import { authClient } from "@/auth-client";
+
+// https://www.better-auth.com/docs/basic-usage#sign-up
 
 export default function RegisterPage() {
   const [confirm, setConfirm] = useState("");
@@ -35,15 +38,25 @@ export default function RegisterPage() {
     setError(null);
     setSuccess(null);
 
-    if (validate()) {
-      setError(validate());
+    const validationError = validate();
+
+    if (validationError) {
+      setError(validationError);
       return;
     }
 
     try {
       setSubmitting(true);
-      // TODO: Replace with real API call
-      await new Promise((r) => setTimeout(r, 500));
+
+      const { error } = await authClient.signUp.email({
+        email, password, name
+      });
+
+      if (error) {
+        setError(error.message ?? "Something went wrong. Please try again.");
+        return;
+      }
+
       setSuccess("Account created. You can log in now.");
     } catch (err) {
       console.error(err);
@@ -56,6 +69,7 @@ export default function RegisterPage() {
   {
     /* Form */
   }
+
   return (
     <Box
       aria-label="Register form"
