@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.7.0](https://github.com/milliorn/fitness-tracker/compare/v2.6.0...v2.7.0) (2025-12-01)
+
+
+### Features
+
+* **auth,register:** connect register form to Better Auth; disable auto sign-in ([#66](https://github.com/milliorn/fitness-tracker/issues/66)) ([fe6f030](https://github.com/milliorn/fitness-tracker/commit/fe6f0308c8fc1a1f8d75114e7cd10758e5615a0c))
+
 ## [2.6.0](https://github.com/milliorn/fitness-tracker/compare/v2.5.0...v2.6.0) (2025-12-01)
 
 
