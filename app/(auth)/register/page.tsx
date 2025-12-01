@@ -13,6 +13,8 @@ import { FormEvent, useState } from "react";
 import { AuthCta } from "../components/AuthCta";
 import { authClient } from "@/auth-client";
 
+// https://www.better-auth.com/docs/basic-usage#sign-up
+
 export default function RegisterPage() {
   const [confirm, setConfirm] = useState("");
   const [email, setEmail] = useState("");
