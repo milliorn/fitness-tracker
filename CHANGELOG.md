@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.6.0](https://github.com/milliorn/fitness-tracker/compare/v2.5.0...v2.6.0) (2025-12-01)
+
+
+### Features
+
+* **auth-client:** initialize Better Auth React client; add usage refs ([#64](https://github.com/milliorn/fitness-tracker/issues/64)) ([b36aec5](https://github.com/milliorn/fitness-tracker/commit/b36aec56e2a18886c933fe0f2fc69c15bf4b7493))
+
 ## [2.5.0](https://github.com/milliorn/fitness-tracker/compare/v2.4.0...v2.5.0) (2025-12-01)
 
 
