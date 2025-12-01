@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.0](https://github.com/milliorn/fitness-tracker/compare/v2.4.0...v2.5.0) (2025-12-01)
+
+
+### Features
+
+* **auth,api:** enable email/password and wire Next.js auth route ([#62](https://github.com/milliorn/fitness-tracker/issues/62)) ([bd2daa7](https://github.com/milliorn/fitness-tracker/commit/bd2daa762717ca4ade44cd63565806d6024ba5ab))
+
 ## [2.4.0](https://github.com/milliorn/fitness-tracker/compare/v2.3.0...v2.4.0) (2025-11-26)
 
 
