@@ -5,5 +5,5 @@ import { db } from "./db";
 // https://www.better-auth.com/docs/basic-usage#sign-up
 export const auth = betterAuth({
   database: db,
-  emailAndPassword: { enabled: true, autoSignIn: false },
+  emailAndPassword: { enabled: true, autoSignIn: true },
 });
