@@ -2,16 +2,43 @@
 
 import { Box, Button, Stack, TextField, Typography } from "@mui/material";
 
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { AuthCta } from "../components/AuthCta";
+import { authClient } from "@/auth-client";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function onSubmit(e: React.FormEvent) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // TODO: call your auth endpoint
+
+    try {
+      const { error } = await authClient.signIn.email(
+        {
+          email,
+          password,
+          callbackURL: "/dashboard",
+          rememberMe: true, // explicit so you can tweak later
+        },
+        {
+          onError(ctx) {
+            // minimal UX for now; can swap to MUI <Alert> later
+            alert(ctx.error.message ?? "Unable to log in. Please try again.");
+          },
+        }
+      );
+
+      if (error) {
+        // in case you prefer checking the return instead of callbacks
+        alert(error.message ?? "Unable to log in. Please try again.");
+      }
+
+      // onSuccess + callbackURL will handle redirect for us
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong. Please try again.");
+    }
   }
 
   /* Form */
