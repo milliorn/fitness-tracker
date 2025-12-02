@@ -26,7 +26,7 @@ export default function LoginPage() {
             // minimal UX for now; can swap to MUI <Alert> later
             alert(ctx.error.message ?? "Unable to log in. Please try again.");
           },
-        }
+        },
       );
 
       if (error) {
