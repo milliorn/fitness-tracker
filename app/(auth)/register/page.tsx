@@ -49,7 +49,7 @@ export default function RegisterPage() {
       setSubmitting(true);
 
       const { error } = await authClient.signUp.email({
-        email, password, name
+        email, password, name, callbackURL: "/dashboard"
       });
 
       if (error) {
