@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.8.0](https://github.com/milliorn/fitness-tracker/compare/v2.7.0...v2.8.0) (2025-12-02)
+
+
+### Features
+
+* **auth,ui:** auto sign-in; wire login; redirect after signup ([#69](https://github.com/milliorn/fitness-tracker/issues/69)) ([1358853](https://github.com/milliorn/fitness-tracker/commit/1358853546d2c5aaf75dd15bca41f6a08fb1a676))
+
 ## [2.7.0](https://github.com/milliorn/fitness-tracker/compare/v2.6.0...v2.7.0) (2025-12-01)
 
 
