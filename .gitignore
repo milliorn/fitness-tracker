@@ -41,3 +41,11 @@ yarn-error.log*
 next-env.d.ts
 cypress/screenshots/app.cy.ts/Home avatar -- has the loginregister buttons next to the avatar (failed).png
 cypress/screenshots/home.a11y.cy.ts/Home CTA accessibility -- focus order Login - Register (failed).png
+
+# SQLite databases
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
