@@ -101,3 +101,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 <https://github.com/WiseLibs/better-sqlite3>
 <https://github.com/WiseLibs/better-sqlite3/blob/master/docs/performance.md>
+
+## Google Cloud
+
+<<https://console.cloud.google.com>
