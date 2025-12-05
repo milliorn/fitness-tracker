@@ -1,6 +1,13 @@
 "use client";
 
-import { Box, Button, Stack, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Divider,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 
 import { FormEvent, useState } from "react";
 import { AuthCta } from "../components/AuthCta";
@@ -10,38 +17,29 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  async function onSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
+  async function handleGoogleSignIn() {
     try {
-      const { error } = await authClient.signIn.email(
-        {
-          email,
-          password,
-          callbackURL: "/dashboard",
-          rememberMe: true, // explicit so you can tweak later
-        },
-        {
-          onError(ctx) {
-            // minimal UX for now; can swap to MUI <Alert> later
-            alert(ctx.error.message ?? "Unable to log in. Please try again.");
-          },
-        },
-      );
-
-      if (error) {
-        // in case you prefer checking the return instead of callbacks
-        alert(error.message ?? "Unable to log in. Please try again.");
-      }
-
-      // onSuccess + callbackURL will handle redirect for us
+      await authClient.signIn.social({
+        provider: "google",
+        callbackURL: "/dashboard",
+      });
     } catch (err) {
       console.error(err);
-      alert("Something went wrong. Please try again.");
+      // TODO: swap to MUI <Alert> later
+      alert("Failed to start Google sign-in. Please try again.");
     }
   }
 
-  /* Form */
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    // Intentionally a no-op for now.
+    // We’ll wire this up to authClient.signIn.email later.
+    console.log("Email/password login not implemented yet", {
+      email,
+      password,
+    });
+  }
+
   return (
     <Box component="form" onSubmit={onSubmit}>
       <Stack spacing={3}>
@@ -49,7 +47,19 @@ export default function LoginPage() {
           Log in
         </Typography>
 
-        {/* Shrink labels = better contrast on dark */}
+        <Button
+          fullWidth
+          type="button"
+          variant="contained"
+          sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
+          onClick={handleGoogleSignIn}
+          data-cy="google-signin"
+        >
+          Continue with Google
+        </Button>
+
+        <Divider>or use email (coming soon)</Divider>
+
         <TextField
           autoComplete="email"
           fullWidth
@@ -75,10 +85,10 @@ export default function LoginPage() {
         <Button
           fullWidth
           type="submit"
-          variant="contained"
+          variant="outlined"
           sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
         >
-          Log in
+          Log in with email (coming soon)
         </Button>
 
         <AuthCta
