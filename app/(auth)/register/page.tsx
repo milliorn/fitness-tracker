@@ -4,6 +4,7 @@ import {
   Alert,
   Box,
   Button,
+  Divider,
   Stack,
   TextField,
   Typography,
@@ -11,17 +12,15 @@ import {
 
 import { FormEvent, useState } from "react";
 import { AuthCta } from "../components/AuthCta";
-import { authClient } from "@/auth-client";
+import NextLink from "next/link";
 
-// https://www.better-auth.com/docs/basic-usage#sign-up
-
+// Placeholder register form – Google is the real path for now.
 export default function RegisterPage() {
   const [confirm, setConfirm] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState<string | null>(null);
 
   const validate = () => {
@@ -45,33 +44,11 @@ export default function RegisterPage() {
       return;
     }
 
-    try {
-      setSubmitting(true);
-
-      const { error } = await authClient.signUp.email({
-        email,
-        password,
-        name,
-        callbackURL: "/dashboard",
-      });
-
-      if (error) {
-        setError(error.message ?? "Something went wrong. Please try again.");
-        return;
-      }
-
-      setSuccess("Account created. You can log in now.");
-    } catch (err) {
-      console.error(err);
-      setError("Something went wrong. Please try again.");
-    } finally {
-      setSubmitting(false);
-    }
+    // Placeholder behavior: no real sign-up yet.
+    setSuccess(
+      "Email/password registration is not available yet. Use “Continue with Google” on the login page."
+    );
   };
-
-  {
-    /* Form */
-  }
 
   return (
     <Box
@@ -83,6 +60,25 @@ export default function RegisterPage() {
     >
       <Stack spacing={3}>
         <Typography variant="h4" component="h1">
+          Registration
+        </Typography>
+
+        <Typography variant="body1">
+          Email/password registration is currently disabled.
+        </Typography>
+
+        <Button
+          component={NextLink}
+          href="/login"
+          variant="contained"
+          sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
+        >
+          Continue with Google
+        </Button>
+
+        <Divider>or use email (coming soon)</Divider>
+
+        <Typography variant="h4" component="h2">
           Create your account
         </Typography>
 
@@ -148,17 +144,16 @@ export default function RegisterPage() {
         />
 
         {error ? <Alert severity="error">{error}</Alert> : null}
-        {success ? <Alert severity="success">{success}</Alert> : null}
+        {success ? <Alert severity="info">{success}</Alert> : null}
 
         <Button
           data-cy="register-cta"
-          disabled={submitting}
           fullWidth
           type="submit"
-          variant="contained"
+          variant="outlined"
           sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
         >
-          {submitting ? "Creating account…" : "Create account"}
+          Create account (coming soon)
         </Button>
 
         <AuthCta
