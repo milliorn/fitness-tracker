@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.9.0](https://github.com/milliorn/fitness-tracker/compare/v2.8.0...v2.9.0) (2025-12-05)
+
+
+### Features
+
+* **auth,app:** add Google sign-in; stub register; add dashboard shell ([#72](https://github.com/milliorn/fitness-tracker/issues/72)) ([93d4db7](https://github.com/milliorn/fitness-tracker/commit/93d4db795894d1c823f50e5da576791fa1bdf258))
+
 ## [2.8.0](https://github.com/milliorn/fitness-tracker/compare/v2.7.0...v2.8.0) (2025-12-02)
 
 
