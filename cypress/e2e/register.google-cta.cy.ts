@@ -1,13 +1,15 @@
 describe("Register: Google CTA behavior", () => {
-  it("shows a link-styled button to /login and never submits the form", () => {
+  it("renders the Google button and navigates to /login", () => {
     cy.visitRegister();
 
-    // Ensure the CTA renders as an anchor to /login
+    // Should render exactly as an anchor to /login
     cy.contains('a[href="/login"]', "Continue with Google")
       .as("googleCta")
       .should("exist");
 
     // Regression guard: ensure it's not a submit button. Refactor in future.
+    // Ensure this anchor is explicitly non-submit
+    // MUI <Button component="a"> may render without a `type`; if present, it must be "button".
     cy.get("@googleCta")
       .invoke("attr", "type")
       .then((type) => {
@@ -16,7 +18,7 @@ describe("Register: Google CTA behavior", () => {
         if (type) expect(type).to.eq("button");
       });
 
-    // Clicking should navigate to /login (and NOT trigger form submit)
+    // Clicking must navigate to /login and not submit the form
     cy.get("@googleCta").click();
     cy.location("pathname").should("eq", "/login");
   });
