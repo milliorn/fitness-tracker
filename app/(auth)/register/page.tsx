@@ -72,6 +72,8 @@ export default function RegisterPage() {
           href="/login"
           variant="contained"
           sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
+          // no-op now, but future-proof if the component changes
+          type="button"
         >
           Continue with Google
         </Button>
