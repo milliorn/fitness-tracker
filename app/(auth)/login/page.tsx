@@ -41,8 +41,8 @@ export default function LoginPage() {
   }
 
   return (
-    <
-      ><Box component="form" onSubmit={onSubmit}>
+    <>
+      <Box component="form" onSubmit={onSubmit}>
         <Stack spacing={3}>
           <Typography variant="h4" component="h1">
             Log in
@@ -59,7 +59,11 @@ export default function LoginPage() {
             Continue with Google
           </Button>
 
-          <Divider>or use email (coming soon)</Divider>
+          <Divider>
+            <Typography component="p" variant="body2" sx={{ m: 0 }}>
+              or use email (coming soon)
+            </Typography>
+          </Divider>
 
           <TextField
             autoComplete="email"
@@ -69,7 +73,8 @@ export default function LoginPage() {
             required
             slotProps={{ inputLabel: { shrink: true } }}
             type="email"
-            value={email} />
+            value={email}
+          />
 
           <TextField
             autoComplete="current-password"
@@ -79,7 +84,8 @@ export default function LoginPage() {
             required
             slotProps={{ inputLabel: { shrink: true } }}
             type="password"
-            value={password} />
+            value={password}
+          />
 
           <Button
             fullWidth
@@ -89,7 +95,6 @@ export default function LoginPage() {
           >
             Log in with email (coming soon)
           </Button>
-
         </Stack>
       </Box>
 
@@ -97,7 +102,9 @@ export default function LoginPage() {
         data-cy="register-cta"
         href="/register"
         label="Register"
-        question="Don’t have an account?" />
+        question="Don’t have an account?"
+      />
     </>
   );
+
 }
