@@ -22,11 +22,7 @@ export function AuthCta({
       variant="body2"
     >
       {question}{" "}
-      <Link
-        component={NextLink}
-        data-cy={dataCy}
-        href={href}
-      >
+      <Link component={NextLink} data-cy={dataCy} href={href}>
         {label}
       </Link>
     </Typography>

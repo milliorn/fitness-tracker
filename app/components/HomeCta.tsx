@@ -1,4 +1,3 @@
-
 import Button from "@mui/material/Button";
 import Link from "next/link";
 
@@ -6,7 +5,7 @@ type HomeCtaProps = {
   href: string;
   cy: string;
   label: string;
-}
+};
 
 export function HomeCta({ href, cy, label }: HomeCtaProps) {
   return (

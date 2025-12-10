@@ -7,9 +7,9 @@ const theme = createTheme({
   components: {
     MuiLink: {
       defaultProps: {
-        underline: "always"
-      }
-    }
+        underline: "always",
+      },
+    },
   },
   palette: {
     mode: "dark",
