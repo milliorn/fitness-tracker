@@ -18,7 +18,7 @@ export function AuthCta({
   return (
     <Typography
       component="span"
-      sx={{ textAlign: "center", fontSize: "16px" }}
+      sx={{ textAlign: "center", fontSize: 16 }}
       variant="body2"
     >
       {question}{" "}
