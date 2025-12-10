@@ -26,7 +26,6 @@ export function AuthCta({
         component={NextLink}
         data-cy={dataCy}
         href={href}
-        underline="always"
       >
         {label}
       </Link>
