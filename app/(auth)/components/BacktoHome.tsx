@@ -17,7 +17,6 @@ export default function BackToHome() {
       <Link
         component={NextLink}
         href="/"
-        underline="hover"
         sx={{ fontSize: 16 }}
       >
         Back to Home
