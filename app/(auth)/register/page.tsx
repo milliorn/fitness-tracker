@@ -46,7 +46,7 @@ export default function RegisterPage() {
 
     // Placeholder behavior: no real sign-up yet.
     setSuccess(
-      "Email/password registration is not available yet. Use “Continue with Google” on the login page."
+      "Email/password registration is not available yet. Use “Continue with Google” on the login page.",
     );
   };
 

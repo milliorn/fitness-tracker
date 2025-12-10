@@ -1,9 +1,8 @@
 import { Typography } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
-import Link from "next/link";
+import { HomeCta } from "./components/HomeCta";
 
 export default function Home() {
   return (
@@ -76,36 +75,8 @@ export default function Home() {
           spacing={2}
           sx={{ alignItems: "center", justifyContent: "center", width: "100%" }}
         >
-          <Button
-            component={Link}
-            href="/login"
-            data-cy="login-cta"
-            variant="outlined"
-            sx={{
-              borderColor: "common.white",
-              borderRadius: "9999px",
-              color: "common.white",
-              px: 4,
-              "&:hover": { borderColor: "common.white" },
-            }}
-          >
-            Login
-          </Button>
-          <Button
-            component={Link}
-            href="/register"
-            data-cy="register-cta"
-            variant="outlined"
-            sx={{
-              borderColor: "common.white",
-              borderRadius: "9999px",
-              color: "common.white",
-              px: 4,
-              "&:hover": { borderColor: "common.white" },
-            }}
-          >
-            Register
-          </Button>
+          <HomeCta href="/login" cy="login-cta" label="Login" />
+          <HomeCta href="/register" cy="register-cta" label="Register" />
         </Stack>
       </Box>
     </Box>

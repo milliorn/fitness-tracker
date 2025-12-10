@@ -14,12 +14,7 @@ export default function BackToHome() {
       >
         <ArrowCircleLeftIcon fontSize="large" />
       </IconButton>
-      <Link
-        component={NextLink}
-        href="/"
-        underline="hover"
-        sx={{ fontSize: 16 }}
-      >
+      <Link component={NextLink} href="/" sx={{ fontSize: 16 }}>
         Back to Home
       </Link>
     </Box>

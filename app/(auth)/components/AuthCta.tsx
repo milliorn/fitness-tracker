@@ -18,16 +18,11 @@ export function AuthCta({
   return (
     <Typography
       component="span"
-      sx={{ textAlign: "center", fontSize: "16px" }}
+      sx={{ textAlign: "center", fontSize: 16 }}
       variant="body2"
     >
       {question}{" "}
-      <Link
-        component={NextLink}
-        data-cy={dataCy}
-        href={href}
-        underline="always"
-      >
+      <Link component={NextLink} data-cy={dataCy} href={href}>
         {label}
       </Link>
     </Typography>

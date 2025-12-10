@@ -4,6 +4,13 @@ import { PropsWithChildren } from "react";
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 
 const theme = createTheme({
+  components: {
+    MuiLink: {
+      defaultProps: {
+        underline: "always",
+      },
+    },
+  },
   palette: {
     mode: "dark",
     background: {

@@ -49,12 +49,12 @@ export default function LoginPage() {
           </Typography>
 
           <Button
+            data-cy="google-signin"
             fullWidth
+            onClick={handleGoogleSignIn}
+            sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
             type="button"
             variant="contained"
-            sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
-            onClick={handleGoogleSignIn}
-            data-cy="google-signin"
           >
             Continue with Google
           </Button>
@@ -89,9 +89,9 @@ export default function LoginPage() {
 
           <Button
             fullWidth
+            sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
             type="submit"
             variant="outlined"
-            sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
           >
             Log in with email (coming soon)
           </Button>
@@ -106,5 +106,4 @@ export default function LoginPage() {
       />
     </>
   );
-
 }
