@@ -1,7 +1,7 @@
 import { auth } from "@/auth";
-import { Box, Stack, Typography } from "@mui/material";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { DashboardClient } from "./DashboardClient";
 
 // https://www.better-auth.com/docs/basic-usage#server-side-authentication
 export default async function DashboardPage() {
@@ -15,21 +15,7 @@ export default async function DashboardPage() {
   }
 
   return (
-    <Box component="main">
-      <Stack spacing={3}>
-        <Typography variant="h4" component="h1">
-          Dashboard
-        </Typography>
-
-        <Typography variant="body1">
-          You&apos;re signed in as{" "}
-          <strong>{session.user.email ?? "unknown email"}</strong>.
-        </Typography>
-
-        <Typography variant="body2">
-          This is a placeholder dashboard.
-        </Typography>
-      </Stack>
-    </Box>
+    <DashboardClient email={session.user.email ?? "unknown email"} />
   );
 }
+
