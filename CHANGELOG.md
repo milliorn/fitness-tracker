@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.11.0](https://github.com/milliorn/fitness-tracker/compare/v2.10.0...v2.11.0) (2025-12-16)
+
+
+### Features
+
+* **dashboard:** protect page with server session; add client UI + sign-out ([#79](https://github.com/milliorn/fitness-tracker/issues/79)) ([093d278](https://github.com/milliorn/fitness-tracker/commit/093d2783080cc367a1acc74fa269b10ba3a9d8b1))
+
 ## [2.10.0](https://github.com/milliorn/fitness-tracker/compare/v2.9.0...v2.10.0) (2025-12-15)
 
 
