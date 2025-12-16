@@ -11,15 +11,15 @@ type DashboardClientProps = {
 // We'll use this for sign-out and any future client hooks.
 export function DashboardClient({ email }: DashboardClientProps) {
   const router = useRouter();
-  
+
   async function handleSignOut() {
     try {
-      await authClient.signOut({ 
+      await authClient.signOut({
         fetchOptions: {
-          onSuccess: ()=> {
-            router.push("/")
+          onSuccess: () => {
+            router.push("/");
           },
-        }
+        },
       });
     } catch (error) {
       console.error("Failed to sign out", error);

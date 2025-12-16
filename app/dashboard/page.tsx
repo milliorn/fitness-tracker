@@ -14,8 +14,5 @@ export default async function DashboardPage() {
     redirect("/");
   }
 
-  return (
-    <DashboardClient email={session.user.email ?? "unknown email"} />
-  );
+  return <DashboardClient email={session.user.email ?? "unknown email"} />;
 }
-
