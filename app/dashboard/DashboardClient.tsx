@@ -58,6 +58,34 @@ export function DashboardClient({ session, email }: DashboardClientProps) {
           You&apos;re signed in as <strong>{email}</strong>.
         </Typography>
 
+        {session && (
+          <Box sx={{ p: 2, borderRadius: 2, bgcolor: "background.paper" }}>
+            <Stack spacing={1}>
+              <Typography variant="subtitle1" fontWeight={600}>
+                Session Info
+              </Typography>
+
+              <Typography variant="body2">
+                Name: <strong>{session.user.name}</strong>
+              </Typography>
+
+              <Typography variant="body2">
+                Email verified:{" "}
+                <strong>
+                  {session.user.emailVerified ? "Yes" : "No"}
+                </strong>
+              </Typography>
+
+              <Typography variant="body2">
+                Session expires:{" "}
+                <strong>
+                  {new Date(session.session.expiresAt).toLocaleString()}
+                </strong>
+              </Typography>
+            </Stack>
+          </Box>
+        )}
+
         <Typography variant="body2">
           This is a placeholder dashboard.
         </Typography>
