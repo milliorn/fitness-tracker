@@ -15,7 +15,9 @@ export default async function DashboardPage() {
   }
 
   return (
-    <DashboardClient email={session.user.email ?? "unknown email"} />
+    <DashboardClient
+      email={session.user.email ?? "unknown email"}
+      session={session}
+    />
   );
 }
-

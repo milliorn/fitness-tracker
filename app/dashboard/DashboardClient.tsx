@@ -6,20 +6,41 @@ import { useRouter } from "next/navigation";
 
 type DashboardClientProps = {
   email: string;
+  session: {
+    session: {
+      id: string;
+      createdAt: Date;
+      updatedAt: Date;
+      userId: string;
+      expiresAt: Date;
+      token: string;
+      ipAddress?: string | null | undefined;
+      userAgent?: string | null | undefined;
+    };
+    user: {
+      id: string;
+      createdAt: Date;
+      updatedAt: Date;
+      email: string;
+      emailVerified: boolean;
+      name: string;
+      image?: string | null | undefined;
+    };
+  } | null;
 };
 
 // We'll use this for sign-out and any future client hooks.
-export function DashboardClient({ email }: DashboardClientProps) {
+export function DashboardClient({ session, email }: DashboardClientProps) {
   const router = useRouter();
-  
+
   async function handleSignOut() {
     try {
-      await authClient.signOut({ 
+      await authClient.signOut({
         fetchOptions: {
-          onSuccess: ()=> {
-            router.push("/")
+          onSuccess: () => {
+            router.push("/");
           },
-        }
+        },
       });
     } catch (error) {
       console.error("Failed to sign out", error);
@@ -36,6 +57,34 @@ export function DashboardClient({ email }: DashboardClientProps) {
         <Typography variant="body1">
           You&apos;re signed in as <strong>{email}</strong>.
         </Typography>
+
+        {session && (
+          <Box sx={{ p: 2, borderRadius: 2, bgcolor: "background.paper" }}>
+            <Stack spacing={1}>
+              <Typography variant="subtitle1" fontWeight={600}>
+                Session Info
+              </Typography>
+
+              <Typography variant="body2">
+                Name: <strong>{session.user.name}</strong>
+              </Typography>
+
+              <Typography variant="body2">
+                Email verified:{" "}
+                <strong>
+                  {session.user.emailVerified ? "Yes" : "No"}
+                </strong>
+              </Typography>
+
+              <Typography variant="body2">
+                Session expires:{" "}
+                <strong>
+                  {new Date(session.session.expiresAt).toLocaleString()}
+                </strong>
+              </Typography>
+            </Stack>
+          </Box>
+        )}
 
         <Typography variant="body2">
           This is a placeholder dashboard.
