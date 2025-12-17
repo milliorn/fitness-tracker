@@ -5,17 +5,14 @@ import {
   Button,
   Divider,
   Stack,
-  TextField,
   Typography,
 } from "@mui/material";
 
-import { FormEvent, useState } from "react";
 import { AuthCta } from "../components/AuthCta";
 import { authClient } from "@/auth-client";
 
 export default function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+
 
   async function handleGoogleSignIn() {
     try {
@@ -30,19 +27,9 @@ export default function LoginPage() {
     }
   }
 
-  async function onSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    // Intentionally a no-op for now.
-    // We’ll wire this up to authClient.signIn.email later.
-    console.log("Email/password login not implemented yet", {
-      email,
-      password,
-    });
-  }
-
   return (
     <>
-      <Box component="form" onSubmit={onSubmit}>
+      <Box component="form">
         <Stack spacing={3}>
           <Typography variant="h4" component="h1">
             Log in
@@ -60,41 +47,11 @@ export default function LoginPage() {
           </Button>
 
           <Divider>
+
             <Typography component="p" variant="body2" sx={{ m: 0 }}>
               or use email (coming soon)
             </Typography>
           </Divider>
-
-          <TextField
-            autoComplete="email"
-            fullWidth
-            label="Email"
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            slotProps={{ inputLabel: { shrink: true } }}
-            type="email"
-            value={email}
-          />
-
-          <TextField
-            autoComplete="current-password"
-            fullWidth
-            label="Password"
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            slotProps={{ inputLabel: { shrink: true } }}
-            type="password"
-            value={password}
-          />
-
-          <Button
-            fullWidth
-            sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
-            type="submit"
-            variant="outlined"
-          >
-            Log in with email (coming soon)
-          </Button>
         </Stack>
       </Box>
 
