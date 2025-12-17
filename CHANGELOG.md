@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.12.0](https://github.com/milliorn/fitness-tracker/compare/v2.11.0...v2.12.0) (2025-12-17)
+
+
+### Features
+
+* **dashboard:** add non-prod session debug panel ([#82](https://github.com/milliorn/fitness-tracker/issues/82)) ([5f15d04](https://github.com/milliorn/fitness-tracker/commit/5f15d04f5307d5f156f7b9fbde94f32dc9084084))
+
 ## [2.11.0](https://github.com/milliorn/fitness-tracker/compare/v2.10.0...v2.11.0) (2025-12-16)
 
 
