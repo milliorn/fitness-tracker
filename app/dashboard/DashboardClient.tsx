@@ -94,7 +94,7 @@ export function DashboardClient({ session, email }: DashboardClientProps) {
                 session,
               },
               null,
-              2
+              2,
             )}
           </Box>
         )}
