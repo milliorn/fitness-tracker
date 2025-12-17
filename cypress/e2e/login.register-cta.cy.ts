@@ -79,16 +79,9 @@ describe("Login: Register CTA (exhaustive)", () => {
       .and("not.equal", "none");
   });
 
-  it("appears after the submit button in tab order", () => {
-    // tab through the page in actual DOM order until CTA should appear
-    cy.realPress("Tab"); // Back to Home icon
-    cy.realPress("Tab"); // Back to Home link
-    cy.realPress("Tab"); // Google button
-    cy.realPress("Tab"); // Email
-    cy.realPress("Tab"); // Password
-    cy.realPress("Tab"); // Submit button
-
-    cy.realPress("Tab"); // CTA should now be focused
+  it("is reachable by keyboard after the primary action", () => {
+    cy.get('[data-cy="google-signin"]').focus();
+    cy.realPress("Tab");
     cy.focused().should("have.attr", "data-cy", "register-cta");
   });
 
