@@ -1,4 +1,4 @@
-"use client"; // Required because this page triggers client-side auth flows and event handlers
+"use client"; // Required because this page initiates client-side auth flows and event handlers
 
 import {
   Box,
@@ -12,20 +12,28 @@ import { AuthCta } from "../components/AuthCta";
 import { authClient } from "@/auth-client";
 
 /**
+ * Login page for initiating user authentication.
  *
- * Primary entry point for user authentication.
+ * This page is intentionally implemented as a Client Component because it:
+ * - Triggers interactive authentication flows (OAuth redirects)
+ * - Handles user-driven events (button clicks)
+ * - Delegates all auth side effects to the shared auth client
  *
- * - All auth side effects (redirects, token handling) are delegated to `authClient`
- *   to keep the UI layer thin and declarative.
+ * @returns The login page UI and authentication entry points.
  */
 export default function LoginPage() {
-
   /**
+   * Initiates Google OAuth sign-in.
+   * - Wrapped in a named handler instead of an inline `onClick`
+   *   to keep side effects isolated, readable, and testable
+   * - `callbackURL` is defined locally to make post-auth navigation
+   *   explicit at the call site rather than hidden in configuration
    *
-   * - Wrapped in an explicit handler instead of inline `onClick`
-   *   to keep side effects isolated and testable.
-   * - `callbackURL` is defined here (rather than globally) to make
-   *   post-auth navigation explicit at the call site.
+   * Error handling:
+   * - Fail-fast with a visible error in this critical auth path
+   * - Uses a temporary `alert` for visibility during early development
+   *   and will be replaced with a styled MUI alert once error states
+   *   are fully designed
    */
   async function handleGoogleSignIn() {
     try {
@@ -34,10 +42,8 @@ export default function LoginPage() {
         callbackURL: "/dashboard",
       });
     } catch (err) {
-      // Fail fast with a visible error in the critical auth path.
-      // Intentionally noisy until replaced with a styled, user-friendly alert.
       console.error(err);
-      // TODO: swap to MUI <Alert> once error states are fully designed
+      // TODO: replace with MUI <Alert> once auth error UX is finalized
       alert("Failed to start Google sign-in. Please try again.");
     }
   }
@@ -51,11 +57,11 @@ export default function LoginPage() {
           </Typography>
 
           <Button
-            data-cy="google-signin"  
+            data-cy="google-signin"
             fullWidth
             onClick={handleGoogleSignIn}
             sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
-            type="button"        
+            type="button"
             variant="contained"
           >
             Continue with Google
