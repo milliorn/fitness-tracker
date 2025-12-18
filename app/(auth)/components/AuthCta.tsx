@@ -2,45 +2,52 @@ import NextLink from "next/link";
 import { Typography, Link } from "@mui/material";
 
 /**
- * Props for AuthCta.
+ * Props for {@link AuthCta}.
  *
- * Standardized authentication-related call-to-action (CTA) used across
- * login/register flows to ensure visual, behavioral, and testing consistency.
+ * A standardized authentication-related call-to-action (CTA) used across
+ * login and registration flows to ensure visual, behavioral, and testing
+ * consistency.
  *
- * Requiring `data-cy` at the type level enforces testability as a first-class
- * concern and prevents accidental omission when the component is consumed.
+ * Requiring the Cypress selector at the type level enforces testability
+ * as a first-class concern and prevents accidental omission in critical
+ * auth paths.
  */
 type AuthCtaProps = {
-  /** Contextual question shown before the CTA (e.g. "Don't have an account?") */
+  /**
+   * Contextual prompt displayed before the CTA link.
+   */
   question: string;
 
-  /** Destination route for the CTA (e.g. "/register", "/login") */
+  /**
+   * Destination route for the CTA.
+   */
   href: string;
 
-  /** Clickable label for the CTA link */
+  /**
+   * Visible, clickable label rendered as the link text.
+   */
   label: string;
 
   /**
-   * Cypress selector.
-   * Enforced here (rather than optional) to guarantee stable E2E selectors
-   * for auth flows, which are critical paths and prone to UI churn.
+   * Cypress selector used for stable end-to-end testing.
    */
   "data-cy": string;
 };
 
 /**
+ * Inline authentication call-to-action component.
  *
- * Renders a small, inline authentication CTA composed of:
- *  - non-interactive contextual text (`question`)
- *  - a semantic link (`label`) that performs client-side navigation
+ * This component renders:
+ * - Non-interactive contextual copy (`question`)
+ * - A semantic, client-routed link (`label`)
  *
- * Design notes:
- * - Uses MUI `Link` + `NextLink` to preserve Next.js client routing
- *   while maintaining MUI theming and accessibility defaults.
- * - Wrapped in `Typography` to keep text alignment, font sizing, and
- *   line-height consistent with surrounding auth copy.
- * - Rendered as a `span` to allow inline placement within forms/layouts
- *   without forcing block-level behavior.
+ * - Composes MUI `Link` with Next.js `Link` to preserve client-side routing
+ *   while retaining MUI theming and accessibility behavior.
+ * - Rendered as a `span` to allow inline placement without forcing
+ *   block-level layout behavior.
+ *
+ * @param props - {@link AuthCtaProps}
+ * @returns An inline authentication CTA suitable for login and register views.
  */
 export function AuthCta({
   question,
@@ -55,11 +62,7 @@ export function AuthCta({
       variant="body2"
     >
       {question}{" "}
-      <Link
-        component={NextLink}
-        data-cy={dataCy}
-        href={href}
-      >
+      <Link component={NextLink} data-cy={dataCy} href={href}>
         {label}
       </Link>
     </Typography>
