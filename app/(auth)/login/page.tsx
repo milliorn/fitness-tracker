@@ -1,4 +1,4 @@
-"use client";
+"use client"; // Required because this page initiates client-side auth flows and event handlers
 
 import {
   Box,
@@ -11,9 +11,30 @@ import {
 import { AuthCta } from "../components/AuthCta";
 import { authClient } from "@/auth-client";
 
+/**
+ * Login page for initiating user authentication.
+ *
+ * This page is intentionally implemented as a Client Component because it:
+ * - Triggers interactive authentication flows (OAuth redirects)
+ * - Handles user-driven events (button clicks)
+ * - Delegates all auth side effects to the shared auth client
+ *
+ * @returns The login page UI and authentication entry points.
+ */
 export default function LoginPage() {
-
-
+  /**
+   * Initiates Google OAuth sign-in.
+   * - Wrapped in a named handler instead of an inline `onClick`
+   *   to keep side effects isolated, readable, and testable
+   * - `callbackURL` is defined locally to make post-auth navigation
+   *   explicit at the call site rather than hidden in configuration
+   *
+   * Error handling:
+   * - Fail-fast with a visible error in this critical auth path
+   * - Uses a temporary `alert` for visibility during early development
+   *   and will be replaced with a styled MUI alert once error states
+   *   are fully designed
+   */
   async function handleGoogleSignIn() {
     try {
       await authClient.signIn.social({
@@ -22,7 +43,7 @@ export default function LoginPage() {
       });
     } catch (err) {
       console.error(err);
-      // TODO: swap to MUI <Alert> later
+      // TODO: replace with MUI <Alert> once auth error UX is finalized
       alert("Failed to start Google sign-in. Please try again.");
     }
   }
@@ -47,7 +68,6 @@ export default function LoginPage() {
           </Button>
 
           <Divider>
-
             <Typography component="p" variant="body2" sx={{ m: 0 }}>
               or use email (coming soon)
             </Typography>

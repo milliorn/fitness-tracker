@@ -1,4 +1,4 @@
-"use client";
+"use client"; // Required for client-side navigation and interactive auth affordances
 
 import {
   Box,
@@ -11,6 +11,16 @@ import {
 import { AuthCta } from "../components/AuthCta";
 import NextLink from "next/link";
 
+/**
+ * This page exists to preserve routing symmetry (`/login` ↔ `/register`)
+ * while explicitly disabling email/password registration during early
+ * development.
+ * 
+ * - Prevent users from attempting unsupported registration paths
+ * - Maintain a familiar auth flow structure for future expansion
+ * 
+ * @returns The registration page UI.
+ */
 export default function RegisterPage() {
   return (
     <Box
@@ -33,7 +43,6 @@ export default function RegisterPage() {
           href="/login"
           variant="contained"
           sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
-          // no-op now, but future-proof if the component changes
           type="button"
         >
           Continue with Google

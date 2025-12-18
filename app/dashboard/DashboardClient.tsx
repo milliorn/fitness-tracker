@@ -4,6 +4,11 @@ import { authClient } from "@/auth-client";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 
+/**
+ * This component is intentionally client-side because it handles user-initiated sign-out.
+ * The session object is treated as **hydrated state**, not a source of truth.
+ * Authoritative authentication state always lives on the server.
+ */
 type DashboardClientProps = {
   // This is derived identity, not authoritative session state
   email: string;
@@ -48,8 +53,19 @@ type DashboardClientProps = {
   } | null;
 };
 
-// We'll use this for sign-out and any future client hooks.
-export function DashboardClient({ session, email }: DashboardClientProps) {
+/**
+ * Client-side dashboard shell.
+ *
+ * - Display basic authenticated identity information
+ * - Provide a sign-out action
+ * - Optionally expose session debug data in non-production environments
+ *
+ * This component deliberately avoids owning authentication logic itself;
+ * it delegates session mutation to the shared auth client.
+ *
+ * @param props - {@link DashboardClientProps}
+ * @returns The client-rendered dashboard UI.
+ */export function DashboardClient({ session, email }: DashboardClientProps) {
   const router = useRouter();
 
   async function handleSignOut() {
