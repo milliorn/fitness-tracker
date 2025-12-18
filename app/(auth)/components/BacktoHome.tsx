@@ -3,16 +3,19 @@ import { Box, IconButton, Link } from "@mui/material";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 
 /**
+ * Back-to-home navigation control for authentication flows.
  *
- * Provides a way back to the landing page
- * from authentication flows (e.g. login, register).
+ * This component provides a clear escape hatch from auth-related pages
+ * (such as login and registration) back to the public landing page.
  *
- * This component exposes navigation affordances:
- *  - an icon button for fast, glanceable interaction
- *  - a text link for clarity and accessibility
+ * - Exposes both an icon-based control and a text link to accommodate
+ *   different user preferences and accessibility needs
  *
- * Both navigate to the same destination but serve different user preferences
- * and accessibility needs.
+ * - Uses Next.js `Link` for client-side navigation
+ * - Composes MUI components to preserve consistent theming and focus behavior
+ * - Keeps routing logic declarative and colocated with the UI
+ *
+ * @returns A horizontally aligned icon button and text link that navigate home.
  */
 export default function BackToHome() {
   return (
@@ -25,18 +28,18 @@ export default function BackToHome() {
     >
       <IconButton
         aria-label="Back to Home"
-        component={NextLink}      
-        data-cy="back-to-home"    
+        component={NextLink}
+        data-cy="back-to-home"
         href="/"
-        size="large"              
+        size="large"
       >
         <ArrowCircleLeftIcon fontSize="large" />
       </IconButton>
 
       <Link
-        component={NextLink} 
+        component={NextLink}
         href="/"
-        sx={{ fontSize: 16 }} 
+        sx={{ fontSize: 16 }}
       >
         Back to Home
       </Link>
