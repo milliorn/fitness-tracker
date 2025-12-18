@@ -4,8 +4,7 @@ import { Typography, Link } from "@mui/material";
 /**
  * Props for AuthCta.
  *
- * This component is intentionally narrow in scope: it represents a
- * standardized authentication-related call-to-action (CTA) used across
+ * Standardized authentication-related call-to-action (CTA) used across
  * login/register flows to ensure visual, behavioral, and testing consistency.
  *
  * Requiring `data-cy` at the type level enforces testability as a first-class
@@ -30,7 +29,6 @@ type AuthCtaProps = {
 };
 
 /**
- * AuthCta
  *
  * Renders a small, inline authentication CTA composed of:
  *  - non-interactive contextual text (`question`)
@@ -58,7 +56,7 @@ export function AuthCta({
     >
       {question}{" "}
       <Link
-        component={NextLink} 
+        component={NextLink}
         data-cy={dataCy}
         href={href}
       >
