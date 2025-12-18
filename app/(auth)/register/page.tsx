@@ -1,4 +1,4 @@
-"use client";
+"use client"; // Required for client-side navigation and interactive auth affordances
 
 import {
   Box,
@@ -11,13 +11,21 @@ import {
 import { AuthCta } from "../components/AuthCta";
 import NextLink from "next/link";
 
+/**
+ *
+ * Registration entry point with intentionally constrained functionality.
+ *
+ * - Email/password registration is explicitly disabled.
+ * - Users are funneled back to login to continue via Google OAuth.
+ * - Preserve routing symmetry (/login ↔ /register)
+ */
 export default function RegisterPage() {
   return (
     <Box
-      aria-label="Register form"
+      aria-label="Register form"   
       component="form"
-      data-cy="register-form"
-      noValidate
+      data-cy="register-form"     
+      noValidate                 
     >
       <Stack spacing={3}>
         <Typography variant="h4" component="h1">
@@ -29,11 +37,10 @@ export default function RegisterPage() {
         </Typography>
 
         <Button
-          component={NextLink}
+          component={NextLink}     
           href="/login"
           variant="contained"
           sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
-          // no-op now, but future-proof if the component changes
           type="button"
         >
           Continue with Google
