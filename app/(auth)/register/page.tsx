@@ -12,20 +12,22 @@ import { AuthCta } from "../components/AuthCta";
 import NextLink from "next/link";
 
 /**
- *
- * Registration entry point with intentionally constrained functionality.
- *
- * - Email/password registration is explicitly disabled.
- * - Users are funneled back to login to continue via Google OAuth.
- * - Preserve routing symmetry (/login ↔ /register)
+ * This page exists to preserve routing symmetry (`/login` ↔ `/register`)
+ * while explicitly disabling email/password registration during early
+ * development.
+ * 
+ * - Prevent users from attempting unsupported registration paths
+ * - Maintain a familiar auth flow structure for future expansion
+ * 
+ * @returns The registration page UI.
  */
 export default function RegisterPage() {
   return (
     <Box
-      aria-label="Register form"   
+      aria-label="Register form"
       component="form"
-      data-cy="register-form"     
-      noValidate                 
+      data-cy="register-form"
+      noValidate
     >
       <Stack spacing={3}>
         <Typography variant="h4" component="h1">
@@ -37,7 +39,7 @@ export default function RegisterPage() {
         </Typography>
 
         <Button
-          component={NextLink}     
+          component={NextLink}
           href="/login"
           variant="contained"
           sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
