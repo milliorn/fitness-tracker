@@ -21,8 +21,7 @@ type HomeCtaProps = {
   label: string;
 };
 
-/**Next.js comment generation guide
- * Home page Call-To-Action button.
+/**Home page Call-To-Action button.
  *
  * This component composes MUI's `Button` with Next.js `Link` to:
  * - Preserve semantic anchor behavior and client-side routing
