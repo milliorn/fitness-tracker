@@ -3,12 +3,17 @@ import { ReactNode } from "react";
 import BackToHome from "./components/BacktoHome";
 
 /**
+ * Shared layout wrapper for authentication routes.
  *
- * Shared layout wrapper for authentication routes (e.g. /login, /register).
+ * This layout is used by auth-related pages (e.g. `/login`, `/register`) to:
+ * - Provide consistent navigation affordances back to the public landing page
+ * - Keeps auth pages visually and structurally consistent
+ * - Avoids duplicating layout and spacing logic in individual auth routes
+ * - Encapsulates auth-specific chrome without leaking into the rest of the app
  *
- * - Vertically and horizontally center auth content across all viewports
- * - Constrain auth UI to a readable, card-like surface
- * - Provide consistent navigation affordances (BackToHome)
+ * @param props - Layout props
+ * @param props.children - Auth page content rendered within the layout
+ * @returns A centered, constrained layout wrapper for authentication routes.
  */
 export default function AuthLayout({ children }: { children: ReactNode }) {
   return (
@@ -18,25 +23,22 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
         display: "grid",
         minHeight: "100dvh",
         p: 2,
-        placeItems: "center", 
+        placeItems: "center",
       }}
     >
       <Box
-        component="main" 
+        component="main"
         sx={{
           bgcolor: "background.paper",
           borderRadius: 3,
           boxShadow: 8,
-          maxWidth: 320, 
+          maxWidth: 320,
           p: 3,
           width: "100%",
         }}
       >
-        <Stack
-          spacing={2}
-          sx={{ width: "100%", maxWidth: 320 }}>
+        <Stack spacing={2} sx={{ width: "100%", maxWidth: 320 }}>
           <BackToHome />
-
           {children}
         </Stack>
       </Box>
