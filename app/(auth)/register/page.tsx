@@ -48,6 +48,16 @@ export default function RegisterPage() {
           Continue with Google
         </Button>
 
+        <Button
+          component={NextLink}
+          href="/login"
+          variant="contained"
+          sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
+          type="button"
+        >
+          Continue with Discord
+        </Button>
+
         <Divider>or use email (coming soon)</Divider>
 
         <AuthCta
