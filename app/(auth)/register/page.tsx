@@ -1,12 +1,6 @@
 "use client"; // Required for client-side navigation and interactive auth affordances
 
-import {
-  Box,
-  Button,
-  Divider,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Divider, Stack, Typography } from "@mui/material";
 
 import { AuthCta } from "../components/AuthCta";
 import NextLink from "next/link";
@@ -15,10 +9,10 @@ import NextLink from "next/link";
  * This page exists to preserve routing symmetry (`/login` ↔ `/register`)
  * while explicitly disabling email/password registration during early
  * development.
- * 
+ *
  * - Prevent users from attempting unsupported registration paths
  * - Maintain a familiar auth flow structure for future expansion
- * 
+ *
  * @returns The registration page UI.
  */
 export default function RegisterPage() {
@@ -46,6 +40,16 @@ export default function RegisterPage() {
           type="button"
         >
           Continue with Google
+        </Button>
+
+        <Button
+          component={NextLink}
+          href="/login"
+          variant="contained"
+          sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
+          type="button"
+        >
+          Continue with Discord
         </Button>
 
         <Divider>or use email (coming soon)</Divider>

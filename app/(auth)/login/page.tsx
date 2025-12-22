@@ -1,12 +1,6 @@
 "use client"; // Required because this page initiates client-side auth flows and event handlers
 
-import {
-  Box,
-  Button,
-  Divider,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Divider, Stack, Typography } from "@mui/material";
 
 import { AuthCta } from "../components/AuthCta";
 import { authClient } from "@/auth-client";
@@ -23,7 +17,7 @@ import { authClient } from "@/auth-client";
  */
 export default function LoginPage() {
   /**
-   * Initiates Google OAuth sign-in.
+   * Initiates Social OAuth sign-in.
    * - Wrapped in a named handler instead of an inline `onClick`
    *   to keep side effects isolated, readable, and testable
    * - `callbackURL` is defined locally to make post-auth navigation
@@ -35,16 +29,15 @@ export default function LoginPage() {
    *   and will be replaced with a styled MUI alert once error states
    *   are fully designed
    */
-  async function handleGoogleSignIn() {
+  async function handleSocialSignIn(provider: "google" | "discord") {
     try {
       await authClient.signIn.social({
-        provider: "google",
+        provider,
         callbackURL: "/dashboard",
       });
     } catch (err) {
       console.error(err);
-      // TODO: replace with MUI <Alert> once auth error UX is finalized
-      alert("Failed to start Google sign-in. Please try again.");
+      alert(`Failed to start ${provider} sign-in. Please try again.`);
     }
   }
 
@@ -59,12 +52,23 @@ export default function LoginPage() {
           <Button
             data-cy="google-signin"
             fullWidth
-            onClick={handleGoogleSignIn}
+            onClick={() => handleSocialSignIn("google")}
             sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
             type="button"
             variant="contained"
           >
             Continue with Google
+          </Button>
+
+          <Button
+            data-cy="discord-signin"
+            fullWidth
+            onClick={() => handleSocialSignIn("discord")}
+            sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
+            type="button"
+            variant="contained"
+          >
+            Continue with Discord
           </Button>
 
           <Divider>

@@ -65,7 +65,7 @@ type DashboardClientProps = {
  *
  * @param props - {@link DashboardClientProps}
  * @returns The client-rendered dashboard UI.
- */export function DashboardClient({ session, email }: DashboardClientProps) {
+ */ export function DashboardClient({ session, email }: DashboardClientProps) {
   const router = useRouter();
 
   async function handleSignOut() {
