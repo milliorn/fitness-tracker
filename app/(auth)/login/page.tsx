@@ -1,12 +1,6 @@
 "use client"; // Required because this page initiates client-side auth flows and event handlers
 
-import {
-  Box,
-  Button,
-  Divider,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Divider, Stack, Typography } from "@mui/material";
 
 import { AuthCta } from "../components/AuthCta";
 import { authClient } from "@/auth-client";

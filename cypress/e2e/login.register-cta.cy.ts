@@ -81,7 +81,11 @@ describe("Login: Register CTA (exhaustive)", () => {
 
   it("is reachable by keyboard after the primary action", () => {
     cy.get('[data-cy="google-signin"]').focus();
-    cy.realPress("Tab");
+
+    cy.realPress("Tab"); // Discord
+    cy.focused().should("have.attr", "data-cy", "discord-signin");
+
+    cy.realPress("Tab"); // Register
     cy.focused().should("have.attr", "data-cy", "register-cta");
   });
 
