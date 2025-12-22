@@ -29,7 +29,7 @@ export default function LoginPage() {
    *   and will be replaced with a styled MUI alert once error states
    *   are fully designed
    */
-  async function handleSocialSignIn(provider: "google" | "discord") {
+  async function handleSocialSignIn(provider: "google" | "discord" | "github") {
     try {
       await authClient.signIn.social({
         provider,
@@ -69,6 +69,17 @@ export default function LoginPage() {
             variant="contained"
           >
             Continue with Discord
+          </Button>
+
+          <Button
+            data-cy="github-signin"
+            fullWidth
+            onClick={() => handleSocialSignIn("github")}
+            sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
+            type="button"
+            variant="contained"
+          >
+            Continue with Github
           </Button>
 
           <Divider>
