@@ -16,6 +16,8 @@ import { authClient } from "@/auth-client";
  * @returns The login page UI and authentication entry points.
  */
 export default function LoginPage() {
+  type SocialProvider = "google" | "discord" | "github";
+
   /**
    * Initiates Social OAuth sign-in.
    * - Wrapped in a named handler instead of an inline `onClick`
@@ -29,7 +31,7 @@ export default function LoginPage() {
    *   and will be replaced with a styled MUI alert once error states
    *   are fully designed
    */
-  async function handleSocialSignIn(provider: "google" | "discord" | "github") {
+  async function handleSocialSignIn(provider: SocialProvider) {
     try {
       await authClient.signIn.social({
         provider,
