@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.13.0](https://github.com/milliorn/fitness-tracker/compare/v2.12.0...v2.13.0) (2025-12-22)
+
+
+### Features
+
+* **auth:** add Discord OAuth, account linking, and Facebook provider ([#86](https://github.com/milliorn/fitness-tracker/issues/86)) ([d458119](https://github.com/milliorn/fitness-tracker/commit/d4581194a2d8d8629a31401e15f822c86a8f804b))
+
 ## [2.12.0](https://github.com/milliorn/fitness-tracker/compare/v2.11.0...v2.12.0) (2025-12-17)
 
 
