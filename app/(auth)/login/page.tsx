@@ -1,9 +1,11 @@
 "use client"; // Required because this page initiates client-side auth flows and event handlers
 
-import { Box, Button, Divider, Stack, Typography } from "@mui/material";
+import { Box, Divider, Stack, Typography } from "@mui/material";
 
 import { AuthCta } from "../components/AuthCta";
 import { authClient } from "@/auth-client";
+import { SocialProvider } from "better-auth/social-providers";
+import { SocialSignInButtons } from "../components/SocialSignInButtons";
 
 /**
  * Login page for initiating user authentication.
@@ -16,8 +18,6 @@ import { authClient } from "@/auth-client";
  * @returns The login page UI and authentication entry points.
  */
 export default function LoginPage() {
-  type SocialProvider = "google" | "discord" | "github";
-
   /**
    * Initiates Social OAuth sign-in.
    * - Wrapped in a named handler instead of an inline `onClick`
@@ -51,38 +51,7 @@ export default function LoginPage() {
             Log in
           </Typography>
 
-          <Button
-            data-cy="google-signin"
-            fullWidth
-            onClick={() => handleSocialSignIn("google")}
-            sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
-            type="button"
-            variant="contained"
-          >
-            Continue with Google
-          </Button>
-
-          <Button
-            data-cy="discord-signin"
-            fullWidth
-            onClick={() => handleSocialSignIn("discord")}
-            sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
-            type="button"
-            variant="contained"
-          >
-            Continue with Discord
-          </Button>
-
-          <Button
-            data-cy="github-signin"
-            fullWidth
-            onClick={() => handleSocialSignIn("github")}
-            sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
-            type="button"
-            variant="contained"
-          >
-            Continue with Github
-          </Button>
+          <SocialSignInButtons onSignIn={handleSocialSignIn} />
 
           <Divider>
             <Typography component="p" variant="body2" sx={{ m: 0 }}>
