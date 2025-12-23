@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.14.0](https://github.com/milliorn/fitness-tracker/compare/v2.13.0...v2.14.0) (2025-12-23)
+
+
+### Features
+
+* **auth:** add GitHub OAuth and unify social sign-in architecture ([#88](https://github.com/milliorn/fitness-tracker/issues/88)) ([6e108ba](https://github.com/milliorn/fitness-tracker/commit/6e108baee809afe904d5f5a7620ba5b6e990a64a))
+
 ## [2.13.0](https://github.com/milliorn/fitness-tracker/compare/v2.12.0...v2.13.0) (2025-12-22)
 
 
