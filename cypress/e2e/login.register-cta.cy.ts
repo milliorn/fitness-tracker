@@ -85,6 +85,9 @@ describe("Login: Register CTA (exhaustive)", () => {
     cy.realPress("Tab"); // Discord
     cy.focused().should("have.attr", "data-cy", "discord-signin");
 
+    cy.realPress("Tab"); // GitHub
+    cy.focused().should("have.attr", "data-cy", "github-signin");
+
     cy.realPress("Tab"); // Register
     cy.focused().should("have.attr", "data-cy", "register-cta");
   });

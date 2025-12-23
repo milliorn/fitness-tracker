@@ -20,6 +20,23 @@ const eslintConfig = [
       "next-env.d.ts",
     ],
   },
+  {
+    // App Router guardrail: disallow Pages Router APIs in /app/**
+    files: ["app/**/*.{js,jsx,ts,tsx}"],
+    rules: {
+      "no-restricted-imports": [
+        "error",
+        {
+          paths: [
+            {
+              name: "next/router",
+              message: "Use next/navigation in the App Router.",
+            },
+          ],
+        },
+      ],
+    },
+  },
 ];
 
 export default eslintConfig;

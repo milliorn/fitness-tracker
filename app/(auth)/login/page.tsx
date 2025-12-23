@@ -1,35 +1,29 @@
 "use client"; // Required because this page initiates client-side auth flows and event handlers
 
-import { Box, Button, Divider, Stack, Typography } from "@mui/material";
+import { Box, Divider, Stack, Typography } from "@mui/material";
 
 import { AuthCta } from "../components/AuthCta";
 import { authClient } from "@/auth-client";
+import { SocialProvider } from "../socialProviders";
+import { SocialButtons } from "../components/SocialSignInButtons";
 
 /**
  * Login page for initiating user authentication.
  *
- * This page is intentionally implemented as a Client Component because it:
- * - Triggers interactive authentication flows (OAuth redirects)
+ * This page is implemented as a Client Component because it:
+ * - Initiates interactive OAuth flows that require browser redirects
  * - Handles user-driven events (button clicks)
- * - Delegates all auth side effects to the shared auth client
+ * - Delegates all authentication side effects to the shared `authClient`
  *
- * @returns The login page UI and authentication entry points.
+ * @returns The login page UI and social authentication entry points.
  */
 export default function LoginPage() {
   /**
-   * Initiates Social OAuth sign-in.
-   * - Wrapped in a named handler instead of an inline `onClick`
-   *   to keep side effects isolated, readable, and testable
-   * - `callbackURL` is defined locally to make post-auth navigation
-   *   explicit at the call site rather than hidden in configuration
+   * Initiates a social OAuth sign-in flow.
    *
-   * Error handling:
-   * - Fail-fast with a visible error in this critical auth path
-   * - Uses a temporary `alert` for visibility during early development
-   *   and will be replaced with a styled MUI alert once error states
-   *   are fully designed
+   * @param provider - The selected social authentication provider
    */
-  async function handleSocialSignIn(provider: "google" | "discord") {
+  async function handleSocialSignIn(provider: SocialProvider) {
     try {
       await authClient.signIn.social({
         provider,
@@ -49,27 +43,7 @@ export default function LoginPage() {
             Log in
           </Typography>
 
-          <Button
-            data-cy="google-signin"
-            fullWidth
-            onClick={() => handleSocialSignIn("google")}
-            sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
-            type="button"
-            variant="contained"
-          >
-            Continue with Google
-          </Button>
-
-          <Button
-            data-cy="discord-signin"
-            fullWidth
-            onClick={() => handleSocialSignIn("discord")}
-            sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
-            type="button"
-            variant="contained"
-          >
-            Continue with Discord
-          </Button>
+          <SocialButtons onAction={handleSocialSignIn} />
 
           <Divider>
             <Typography component="p" variant="body2" sx={{ m: 0 }}>

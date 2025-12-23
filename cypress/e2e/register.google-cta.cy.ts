@@ -3,9 +3,10 @@ describe("Register: Google CTA behavior", () => {
     cy.visitRegister();
 
     // Should render exactly as an anchor to /login
-    cy.contains('a[href="/login"]', "Continue with Google")
+    cy.get('[data-cy="google-signin"]')
       .as("googleCta")
-      .should("exist");
+      .should("exist")
+      .and("contain.text", "Continue with Google");
 
     // Regression guard: ensure it's not a submit button. Refactor in future.
     // Ensure this anchor is explicitly non-submit
