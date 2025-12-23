@@ -4,7 +4,6 @@ import { Box, Divider, Stack, Typography } from "@mui/material";
 
 import { AuthCta } from "../components/AuthCta";
 import { SocialButtons } from "../components/SocialSignInButtons";
-import { SocialProvider } from "../socialProviders";
 import { useRouter } from "next/navigation";
 
 /**
@@ -20,7 +19,7 @@ import { useRouter } from "next/navigation";
 export default function RegisterPage() {
   const router = useRouter();
 
-  function redirectToLogin(_provider: SocialProvider): void {
+  function redirectToLogin(): void {
     router.push("/login");
   }
 
