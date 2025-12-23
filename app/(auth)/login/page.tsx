@@ -4,8 +4,8 @@ import { Box, Divider, Stack, Typography } from "@mui/material";
 
 import { AuthCta } from "../components/AuthCta";
 import { authClient } from "@/auth-client";
-import { SocialProvider } from "better-auth/social-providers";
-import { SocialSignInButtons } from "../components/SocialSignInButtons";
+import { SocialProvider } from "../socialProviders";
+import { SocialButtons } from "../components/SocialSignInButtons";
 
 /**
  * Login page for initiating user authentication.
@@ -51,7 +51,7 @@ export default function LoginPage() {
             Log in
           </Typography>
 
-          <SocialSignInButtons onSignIn={handleSocialSignIn} />
+          <SocialButtons onAction={handleSocialSignIn} />
 
           <Divider>
             <Typography component="p" variant="body2" sx={{ m: 0 }}>

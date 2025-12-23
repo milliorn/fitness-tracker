@@ -1,9 +1,11 @@
 "use client"; // Required for client-side navigation and interactive auth affordances
 
-import { Box, Button, Divider, Stack, Typography } from "@mui/material";
+import { Box, Divider, Stack, Typography } from "@mui/material";
 
 import { AuthCta } from "../components/AuthCta";
-import NextLink from "next/link";
+import { SocialButtons } from "../components/SocialSignInButtons";
+import { SocialProvider } from "../socialProviders";
+import { useRouter } from "next/navigation";
 
 /**
  * This page exists to preserve routing symmetry (`/login` ↔ `/register`)
@@ -16,6 +18,12 @@ import NextLink from "next/link";
  * @returns The registration page UI.
  */
 export default function RegisterPage() {
+  const router = useRouter();
+
+  function redirectToLogin(_provider: SocialProvider): void {
+    router.push("/login");
+  }
+
   return (
     <Box
       aria-label="Register form"
@@ -32,35 +40,7 @@ export default function RegisterPage() {
           Email/password registration is currently disabled.
         </Typography>
 
-        <Button
-          component={NextLink}
-          href="/login"
-          variant="contained"
-          sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
-          type="button"
-        >
-          Continue with Google
-        </Button>
-
-        <Button
-          component={NextLink}
-          href="/login"
-          variant="contained"
-          sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
-          type="button"
-        >
-          Continue with Discord
-        </Button>
-
-        <Button
-          component={NextLink}
-          href="/login"
-          variant="contained"
-          sx={{ py: 1, textTransform: "none", fontWeight: 600 }}
-          type="button"
-        >
-          Continue with Github
-        </Button>
+        <SocialButtons onAction={redirectToLogin} />
 
         <Divider>or use email (coming soon)</Divider>
 
