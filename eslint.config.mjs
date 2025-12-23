@@ -21,7 +21,8 @@ const eslintConfig = [
     ],
   },
   {
-    // Prevent accidental use of Pages Router APIs in App Router code
+    // App Router guardrail: disallow Pages Router APIs in /app/**
+    files: ["app/**/*.{js,jsx,ts,tsx}"],
     rules: {
       "no-restricted-imports": [
         "error",
