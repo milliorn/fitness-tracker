@@ -10,26 +10,18 @@ import { SocialButtons } from "../components/SocialSignInButtons";
 /**
  * Login page for initiating user authentication.
  *
- * This page is intentionally implemented as a Client Component because it:
- * - Triggers interactive authentication flows (OAuth redirects)
+ * This page is implemented as a Client Component because it:
+ * - Initiates interactive OAuth flows that require browser redirects
  * - Handles user-driven events (button clicks)
- * - Delegates all auth side effects to the shared auth client
+ * - Delegates all authentication side effects to the shared `authClient`
  *
- * @returns The login page UI and authentication entry points.
+ * @returns The login page UI and social authentication entry points.
  */
 export default function LoginPage() {
   /**
-   * Initiates Social OAuth sign-in.
-   * - Wrapped in a named handler instead of an inline `onClick`
-   *   to keep side effects isolated, readable, and testable
-   * - `callbackURL` is defined locally to make post-auth navigation
-   *   explicit at the call site rather than hidden in configuration
+   * Initiates a social OAuth sign-in flow.
    *
-   * Error handling:
-   * - Fail-fast with a visible error in this critical auth path
-   * - Uses a temporary `alert` for visibility during early development
-   *   and will be replaced with a styled MUI alert once error states
-   *   are fully designed
+   * @param provider - The selected social authentication provider
    */
   async function handleSocialSignIn(provider: SocialProvider) {
     try {
