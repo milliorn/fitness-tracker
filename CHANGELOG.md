@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.14.1](https://github.com/milliorn/fitness-tracker/compare/v2.14.0...v2.14.1) (2025-12-28)
+
+
+### Reverts
+
+* **auth:** remove unused Facebook provider; update gitignore ([#90](https://github.com/milliorn/fitness-tracker/issues/90)) ([e8a2d3c](https://github.com/milliorn/fitness-tracker/commit/e8a2d3ce06b2634a5f255c21bdc68021416c66cb))
+
 ## [2.14.0](https://github.com/milliorn/fitness-tracker/compare/v2.13.0...v2.14.0) (2025-12-23)
 
 
