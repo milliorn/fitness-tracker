@@ -50,3 +50,4 @@ cypress/screenshots/home.a11y.cy.ts/Home CTA accessibility -- focus order Login 
 *.sqlite
 *.sqlite-wal
 *.sqlite-shm
+fitness-tracker-src.tar.gz
