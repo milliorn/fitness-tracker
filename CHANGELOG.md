@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.15.0](https://github.com/milliorn/fitness-tracker/compare/v2.14.1...v2.15.0) (2025-12-31)
+
+
+### Features
+
+* **db:** configure SQLite via env path and enforce foreign keys ([#92](https://github.com/milliorn/fitness-tracker/issues/92)) ([5594362](https://github.com/milliorn/fitness-tracker/commit/5594362fb900f3a04871dcf4ac405ff52a9bee2e))
+
 ## [2.14.1](https://github.com/milliorn/fitness-tracker/compare/v2.14.0...v2.14.1) (2025-12-28)
 
 
