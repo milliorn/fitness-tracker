@@ -3,6 +3,7 @@
   "version": "2.14.1",
   "private": true,
   "scripts": {
+    "archive": "tar -czf fitness-tracker-src.tar.gz --exclude=node_modules --exclude=.next --exclude=out --exclude=coverage --exclude=.turbo --exclude=.vercel --exclude=cypress/videos --exclude=cypress/screenshots --exclude=dist --exclude=build --exclude=.DS_Store --exclude=.env --exclude=.env.* --exclude=*.log --exclude=*.sqlite --exclude=*.sqlite3 --exclude=*.db --exclude=*.db-wal --exclude=*.db-shm --exclude=*.tsbuildinfo --exclude=.eslintcache --exclude=.cache --exclude=.git --exclude=fitness-tracker-src.tar.gz .",
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
@@ -44,7 +45,7 @@
     "cypress-axe": "^1.7.0",
     "cypress-real-events": "^1.15.0",
     "eslint": "^9",
-    "eslint-config-next": "15.5.6",
+    "eslint-config-next": "15.5.9",
     "typescript": "^5"
   }
 }
