@@ -3,7 +3,7 @@
   "version": "2.14.1",
   "private": true,
   "scripts": {
-    "archive": "tar -czf fitness-tracker-src.tar.gz --exclude=node_modules --exclude=.next --exclude=out --exclude=coverage --exclude=.turbo --exclude=.vercel --exclude=cypress/videos --exclude=cypress/screenshots --exclude=dist --exclude=build --exclude=.DS_Store --exclude=.env --exclude=.env.* --exclude=*.log --exclude=*.sqlite --exclude=*.sqlite3 --exclude=*.db --exclude=.eslintcache --exclude=.cache .",
+    "archive": "tar -czf fitness-tracker-src.tar.gz --exclude=node_modules --exclude=.next --exclude=out --exclude=coverage --exclude=.turbo --exclude=.vercel --exclude=cypress/videos --exclude=cypress/screenshots --exclude=dist --exclude=build --exclude=.DS_Store --exclude=.env --exclude=.env.* --exclude=*.log --exclude=*.sqlite --exclude=*.sqlite3 --exclude=*.db --exclude=*.db-wal --exclude=*.db-shm --exclude=*.tsbuildinfo --exclude=.eslintcache --exclude=.cache --exclude=.git --exclude=fitness-tracker-src.tar.gz .",
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
