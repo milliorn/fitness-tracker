@@ -1,10 +1,21 @@
 # Fitness App
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+A Next.js App Router application for tracking fitness data.
+
+- OAuth-based authentication using Better Auth
+- Local-first SQLite database
+- Material UI component library
+- Cypress configured for end-to-end testing
+
+This project was originally bootstrapped with
+[`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app)
+and has since been customized.
+
+---
 
 ## Getting Started
 
-First, run the development server:
+Run the development server:
 
 ```bash
 npm run dev
@@ -16,93 +27,77 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You can start editing the app by modifying `app/page.tsx`.  
+The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts)
+to automatically optimize and load the Geist font.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Authentication
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This app uses **OAuth-only authentication** via
+[Better Auth](https://www.better-auth.com/).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- No email/password login or registration
+- Providers (e.g. Google) are configured via environment variables
+- Temporary authentication debug UI may be present during development
 
-## Deploy on Vercel
+**Docs:**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- <https://www.better-auth.com/>
+- <https://www.better-auth.com/docs/installation>
+- <https://www.better-auth.com/docs/basic-usage>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
 
-## tsconfig.json
+## Database
 
-<https://www.typescriptlang.org/tsconfig/#Watch_and_Build_Modes_6250>
+- SQLite via `better-sqlite3`
+- Single `sqlite.db` file located at the project root
+- WAL mode enabled for performance and concurrency
 
-## Install Material UI
+**Docs:**
 
-<https://mui.com/material-ui/getting-started/installation/>
+- <https://github.com/WiseLibs/better-sqlite3>
+- <https://github.com/WiseLibs/better-sqlite3/blob/master/docs/performance.md>
 
-## Next.js integration
+---
 
-<https://mui.com/material-ui/integrations/nextjs/>
+## Testing
 
-## material-ui/react-avatar/#image-avatars
+- Cypress is configured for end-to-end testing
+- Tests are run locally and in CI via GitHub Actions
 
-<https://mui.com/material-ui/react-avatar/#image-avatars>
+---
 
-## googleapis/release-please github
+## References
 
-<https://github.com/googleapis/release-please>
+### Next.js
 
-## Conventional Commits
+- <https://nextjs.org/docs>
+- <https://nextjs.org/learn>
+- <https://github.com/vercel/next.js>
 
-<https://www.conventionalcommits.org/en/v1.0.0/>
+### Material UI
 
-## Nextjs Guides for Testing
+- <https://mui.com/material-ui/getting-started/installation/>
+- <https://mui.com/material-ui/integrations/nextjs/>
+- <https://mui.com/material-ui/api/avatar/>
+- <https://mui.com/material-ui/api/button/>
+- <https://mui.com/material-ui/react-css-baseline/>
 
-<https://nextjs.org/docs/pages/guides/testing>
+### Testing & Tooling
 
-## How to set up Cypress with Next.js
+- <https://nextjs.org/docs/pages/guides/testing>
+- <https://nextjs.org/docs/pages/guides/testing/cypress>
+- <https://github.com/cypress-io/github-action>
+- <https://github.com/googleapis/release-please>
+- <https://www.conventionalcommits.org/en/v1.0.0/>
 
-<https://nextjs.org/docs/pages/guides/testing/cypress>
+### Cloud
 
-## GitHub Action for running Cypress
-
-<https://github.com/cypress-io/github-action>
-
-## Material-UI API Avatar
-
-<https://mui.com/material-ui/api/avatar/>
-
-## CSS Baseline
-
-<https://mui.com/material-ui/react-css-baseline/>
-
-## Material-UI API Button
-
-<https://mui.com/material-ui/api/button/>
-
-## Link Component
-
-<https://nextjs.org/docs/app/api-reference/components/link>
-
-## Better-Auth
-
-<https://www.better-auth.com/>
-<https://www.better-auth.com/docs/installation>
-<https://www.better-auth.com/docs/concepts/cli>
-<https://www.better-auth.com/docs/installation#authentication-methods>
-<https://www.better-auth.com/docs/basic-usage>
-<https://www.better-auth.com/docs/authentication/discord>
-
-## better-sqlite3
-
-<https://github.com/WiseLibs/better-sqlite3>
-<https://github.com/WiseLibs/better-sqlite3/blob/master/docs/performance.md>
-
-## Google Cloud
-
-<<https://console.cloud.google.com>
+- <https://console.cloud.google.com>
