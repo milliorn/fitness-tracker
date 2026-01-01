@@ -26,7 +26,7 @@
     "@fontsource/roboto": "^5.2.8",
     "@mui/icons-material": "^7.3.4",
     "@mui/material": "^7.3.4",
-    "@mui/material-nextjs": "^7.3.3",
+    "@mui/material-nextjs": "^7.3.6",
     "better-auth": "^1.4.5",
     "better-sqlite3": "^12.4.6",
     "next": "15.5.9",
