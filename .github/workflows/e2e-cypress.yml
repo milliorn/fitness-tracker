@@ -70,7 +70,7 @@ jobs:
 
       # Run Cypress via the official action
       - name: Cypress run (E2E)
-        uses: cypress-io/github-action@v6
+        uses: cypress-io/github-action@v7
         with:
           # Start server.
           start: npm start
