@@ -28,7 +28,7 @@
     "@mui/material": "^7.3.4",
     "@mui/material-nextjs": "^7.3.6",
     "better-auth": "^1.4.5",
-    "better-sqlite3": "^12.4.6",
+    "better-sqlite3": "^12.6.2",
     "next": "15.5.11",
     "react": "19.2.0",
     "react-dom": "19.2.0"
